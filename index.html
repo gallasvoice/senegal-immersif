@@ -2,110 +2,745 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123d32">
-<title>Sénégal Immersif | Le Sénégal, autrement</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sénégal Immersif</title>
 <style>
-:root{--green:#123d32;--green2:#1d5947;--gold:#d8a84e;--cream:#f7f4ec;--ink:#1e2c27;--muted:#66736d;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--cream);color:var(--ink)}
-header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;background:#fff;position:sticky;top:0;z-index:10;border-bottom:1px solid #e9e6dd}
-.brand{font-weight:850;letter-spacing:.08em;color:var(--green);font-size:15px}.brand span{color:var(--gold)}
-nav{display:flex;gap:26px}nav a{color:#34443d;text-decoration:none;font-size:13px;font-weight:650}
-.menu{display:none;border:0;background:none;font-size:24px}
-.hero{min-height:570px;display:flex;align-items:center;color:white;padding:70px 8vw;background:linear-gradient(90deg,rgba(8,32,27,.83),rgba(8,32,27,.18)),url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=2000&q=85') center/cover}
-.hero-inner{max-width:680px}.eyebrow{color:#f0c66e;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:800}.hero h1{font-family:Georgia,serif;font-size:clamp(48px,7vw,86px);line-height:.98;font-weight:500;margin:20px 0}.hero p{font-size:17px;line-height:1.7;max-width:520px;color:#f1f1e9}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:5px;background:var(--gold);color:#182b24;text-decoration:none;font-size:13px;font-weight:800;border:1px solid var(--gold);cursor:pointer}.btn.outline{background:transparent;color:white;border-color:#ffffff9c}
-section{padding:76px 7vw}.section-head{max-width:700px;margin-bottom:32px}.kicker{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:#a8792a;font-weight:800}.section-head h2{font:500 clamp(32px,4vw,48px)/1.1 Georgia,serif;color:var(--green);margin:12px 0}.section-head p{color:var(--muted);line-height:1.7}
-.explore{background:#fff}.region-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:34px;align-items:start}
-.map-panel{background:#eef2eb;border-radius:14px;padding:22px;border:1px solid #e1e8df}
-.map-panel svg{width:100%;height:auto;display:block;max-height:530px}
-.region{fill:#b7cdbb;stroke:#fff;stroke-width:2;cursor:pointer;transition:fill .2s}.region:hover,.region.active{fill:#d9ad58}.map-label{font-size:12px;fill:#29473a;pointer-events:none;font-weight:650}
-.map-note{font-size:12px;color:var(--muted);margin:12px 0 0}
-.detail{border-radius:14px;background:var(--green);color:#fff;overflow:hidden;min-height:410px}.detail img{width:100%;height:210px;object-fit:cover;display:block}.detail-body{padding:24px}.detail small{color:#e7c47e;letter-spacing:.12em;text-transform:uppercase}.detail h3{font:36px Georgia,serif;margin:8px 0}.detail p{color:#e0e9e2;line-height:1.65;font-size:14px}.detail .btn{margin-top:8px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.place{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px #142c1c0b}.place img{width:100%;height:220px;object-fit:cover;display:block}.place-body{padding:20px}.place .tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#a8792a;font-weight:800}.place h3{font:27px Georgia,serif;color:var(--green);margin:9px 0}.place p{font-size:13px;line-height:1.65;color:var(--muted);min-height:64px}.text-link{color:var(--green2);font-size:13px;font-weight:800;text-decoration:none}
-.feature{background:#173f35;color:white;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.feature h2{font:500 clamp(34px,4vw,52px)/1.08 Georgia,serif;margin:12px 0}.feature p{color:#d6e1d9;line-height:1.75}.feature img{width:100%;height:340px;object-fit:cover;border-radius:10px}
-footer{background:#0d2d25;color:#d5e0d8;padding:32px 7vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px}footer strong{letter-spacing:.1em}
-@media(max-width:760px){header{padding:0 5vw;height:64px}nav{display:none;position:absolute;top:64px;left:0;right:0;background:white;padding:20px 6vw;flex-direction:column;gap:18px;border-bottom:1px solid #eee}nav.open{display:flex}.menu{display:block}.hero{min-height:590px;padding:55px 7vw;background-position:58% center}.hero p{font-size:15px}section{padding:58px 5vw}.region-layout,.feature{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.place img{height:230px}.detail{min-height:0}.map-panel{padding:12px}.map-label{font-size:10px}.feature img{height:250px}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#071b16;color:#fff}
+
+/* HERO */
+.hero{padding:22px 20px 26px;display:flex;flex-direction:column;gap:22px;
+background:radial-gradient(circle at 80% 10%,rgba(218,170,63,.25),transparent 30%),linear-gradient(145deg,#071b16,#0c2c22)}
+header{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:900;letter-spacing:2px;line-height:1.05}
+.badge{font-size:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:30px}
+.hero-content{max-width:650px}
+.kicker{color:#d7ae50;text-transform:uppercase;letter-spacing:3px;font-size:11px}
+h1{font-size:clamp(34px,9vw,64px);line-height:.95;margin:10px 0}
+.hero-text{max-width:520px;color:#d5dfda;line-height:1.6}
+.btn{display:inline-block;margin-top:25px;padding:15px 22px;border-radius:40px;background:#d7a83d;color:#071b16;font-weight:bold;text-decoration:none;border:0;font-size:15px;cursor:pointer}
+
+/* SECTIONS */
+.map-section{background:#f5f1e7;color:#10251e;padding:30px 16px 45px;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto}
+.section-label{color:#9b762d;letter-spacing:3px;font-size:10px;font-weight:bold}
+.section-title{font-size:32px;margin:8px 0 8px}
+.hint{color:#5b6761;font-size:13px;margin-bottom:6px}
+.status{color:#9b762d;font-size:11px;margin-bottom:14px}
+.map-card{background:#e4ece8;border-radius:28px;padding:8px;overflow:hidden}
+.map-card svg{width:100%;height:auto;display:block;touch-action:manipulation}
+.sea{fill:#e4ece8}
+
+/* régions (carte nationale) */
+.reg{fill:#cfe3d6;stroke:#fff;stroke-width:1.6;stroke-linejoin:round;cursor:pointer;transition:fill .2s}
+.reg:hover{fill:#e8c76e}
+.lbl{font-size:10px;font-weight:bold;fill:#10251e;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#fff;stroke-width:2.5px;stroke-linejoin:round}
+
+/* carte d'une région */
+.nb{fill:#d9ded9;stroke:#fff;stroke-width:1.2;opacity:.9;cursor:pointer}
+.focus{fill:#cfe3d6;stroke:#10251e;stroke-width:2.4;stroke-linejoin:round}
+.dot circle{fill:#d7a83d;stroke:#071b16;stroke-width:2.5;cursor:pointer;transition:r .15s}
+.dot text{font-size:12px;font-weight:bold;fill:#071b16;text-anchor:middle;pointer-events:none}
+.dot.sel circle{fill:#071b16;stroke:#d7a83d;stroke-width:3.5}
+.dot.sel text{fill:#d7a83d}
+.dot .nm{font-size:13px;font-weight:bold;fill:#071b16;text-anchor:start;paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}
+
+.back{background:#10251e;color:#fff;border:0;border-radius:30px;padding:12px 18px;font-size:14px;cursor:pointer;margin-bottom:18px}
+.map-info{background:#fff;padding:23px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.08);margin-bottom:16px}
+.map-info small{color:#9b762d;letter-spacing:2px;font-size:10px;font-weight:bold}
+.map-info h3{font-size:28px;margin:6px 0 8px}
+.map-info p{color:#5b6761;line-height:1.6}
+
+.sites{margin-top:18px;display:grid;gap:16px}
+.site{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);border:3px solid transparent;transition:border-color .2s}
+.site.sel{border-color:#d7a83d}
+.ph{height:210px;background:linear-gradient(135deg,#0c2c22,#1d5a45);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:#d7ae50;font-weight:bold;position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.num{position:absolute;top:12px;left:12px;z-index:2;width:30px;height:30px;border-radius:50%;background:#d7a83d;color:#071b16;font-weight:bold;display:flex;align-items:center;justify-content:center;border:2px solid #071b16}
+.site .body{padding:18px 20px 22px}
+.site h4{font-size:20px;margin-bottom:6px}
+.gps{font-size:11px;color:#9b762d;margin-bottom:8px}
+.site p{color:#4a5751;line-height:1.65;font-size:14.5px}
+
+details{margin-top:14px;border-top:1px solid #e3e7e2;padding-top:12px}
+summary{cursor:pointer;color:#9b762d;font-weight:bold;font-size:14px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" ▾"}
+details[open] summary::after{content:" ▴"}
+details p{margin-top:10px}
+.src{margin-top:12px;font-size:11px;color:#87958f}
+.src a{color:#9b762d}
+.full h5{margin:16px 0 2px;font-size:15px;color:#10251e}
+.full p{margin-top:8px;line-height:1.7;font-size:14.5px;color:#4a5751}
+
+/* liste des régions */
+.destinations{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.destination{min-height:100px;padding:18px;border-radius:20px;background:#10251e;color:#fff;cursor:pointer;transition:.25s}
+.destination:hover{transform:translateY(-4px)}
+.destination small{color:#d7ae50;font-size:9px;letter-spacing:1px}
+.destination h3{margin-top:8px;font-size:19px}
+
+footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font-size:11px}
+.credit{margin-top:8px;opacity:.7}
 </style>
 </head>
 <body>
-<header>
-  <a class="brand" href="#" style="text-decoration:none">SÉNÉGAL<span>.</span>IMMERSIF</a>
-  <button class="menu" aria-label="Ouvrir le menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
-  <nav><a href="#explorer">Explorer</a><a href="#destinations">Destinations</a><a href="#concept">Le concept</a></nav>
-</header>
-<main>
+
 <section class="hero">
- <div class="hero-inner"><div class="eyebrow">Une expérience de découverte</div><h1>Le Sénégal,<br><i>autrement.</i></h1><p>Des territoires à explorer. Des histoires à découvrir. Un patrimoine vivant à partager. Entrez dans une nouvelle expérience du tourisme sénégalais.</p><div class="actions"><a class="btn" href="#explorer">Commencer l’exploration ↗</a><a class="btn outline" href="#destinations">Découvrir les destinations</a></div></div>
+<header>
+<div class="logo">SÉNÉGAL<br>IMMERSIF</div>
+<div class="badge">EXPLORE • SENEGAL</div>
+</header>
+<div class="hero-content">
+<div class="kicker">Une nouvelle façon de découvrir le Sénégal</div>
+<h1>Entrez<br>au Sénégal.</h1>
+<p class="hero-text">Touchez une région pour découvrir ses sites touristiques, leur histoire et leur localisation.</p>
+</div>
 </section>
-<section class="explore" id="explorer">
- <div class="section-head"><div class="kicker">Explorer le territoire</div><h2>14 régions, mille histoires.</h2><p>Sélectionnez une région sur la carte pour découvrir son identité, ses paysages et quelques pistes d’exploration. Cette première version utilise une carte schématique interactive, sans fichier externe à ajouter.</p></div>
- <div class="region-layout">
-  <div class="map-panel">
-   <svg viewBox="0 0 520 570" role="img" aria-label="Carte schématique interactive des régions du Sénégal">
-    <path d="M116 35 L195 24 246 49 308 35 360 65 405 58 432 98 468 114 452 157 475 191 443 228 451 270 424 309 437 352 404 390 391 438 352 463 329 509 284 525 251 493 220 505 189 468 149 450 130 409 96 383 83 341 51 310 64 269 37 236 61 194 44 158 74 125 59 87 89 63Z" fill="#dce6dc" stroke="#8cae94" stroke-width="2"/>
-    <g id="regions">
-     <path class="region active" data-id="dakar" d="M44 158 L74 125 93 148 83 180 61 194Z"/>
-     <path class="region" data-id="thies" d="M83 180 L93 148 139 155 151 191 130 216 91 211Z"/>
-     <path class="region" data-id="saintlouis" d="M89 63 L195 24 246 49 235 101 181 120 139 155 93 148 74 125 59 87Z"/>
-     <path class="region" data-id="louga" d="M139 155 L181 120 235 101 270 139 247 183 198 195 151 191Z"/>
-     <path class="region" data-id="matam" d="M246 49 L308 35 360 65 405 58 432 98 400 137 351 151 302 132 270 139 235 101Z"/>
-     <path class="region" data-id="diourbel" d="M151 191 L198 195 216 230 188 257 143 247 130 216Z"/>
-     <path class="region" data-id="fatick" d="M91 211 L130 216 143 247 188 257 190 292 151 306 111 282 83 250Z"/>
-     <path class="region" data-id="kaffrine" d="M198 195 L247 183 270 214 260 258 216 275 188 257 216 230Z"/>
-     <path class="region" data-id="tambacounda" d="M270 139 L302 132 351 151 400 137 443 167 475 191 443 228 451 270 424 309 437 352 404 390 351 374 324 331 288 310 260 258 270 214 247 183Z"/>
-     <path class="region" data-id="kaolack" d="M143 247 L188 257 216 275 210 309 190 326 151 306 111 282Z"/>
-     <path class="region" data-id="kolda" d="M151 306 L190 326 210 309 260 318 288 350 270 390 220 394 189 370 149 369 130 339Z"/>
-     <path class="region" data-id="sedhiou" d="M130 339 L149 369 189 370 220 394 201 422 159 413 130 409 96 383 111 355Z"/>
-     <path class="region" data-id="ziguinchor" d="M96 383 L130 409 159 413 189 435 169 454 149 450 130 409Z"/>
-     <path class="region" data-id="kedougou" d="M351 374 L404 390 391 438 352 463 329 509 284 525 251 493 270 453 270 390 288 350 324 331Z"/>
-    </g>
-    <g class="map-label">
-     <text x="48" y="174">DK</text><text x="105" y="185">TH</text><text x="140" y="83">SL</text><text x="183" y="157">LG</text><text x="326" y="91">MT</text><text x="154" y="230">DB</text><text x="111" y="263">FK</text><text x="211" y="231">KF</text><text x="365" y="250">TB</text><text x="151" y="292">KL</text><text x="205" y="353">KD</text><text x="145" y="390">SD</text><text x="121" y="432">ZG</text><text x="326" y="438">KG</text>
-    </g>
-   </svg>
-   <p class="map-note">Carte illustrative, non destinée à la navigation ou à la délimitation administrative. Les régions sont sélectionnables.</p>
+
+<section class="map-section" id="carte">
+<div class="wrap">
+
+<!-- VUE 1 : CARTE DU SÉNÉGAL -->
+<div id="viewMap">
+  <div class="section-label">CARTE DU SÉNÉGAL</div>
+  <h2 class="section-title">Explorez les territoires</h2>
+  <p class="hint">Touchez une région pour ouvrir sa carte et ses sites touristiques.</p>
+  <p class="status" id="status">Chargement de la carte…</p>
+  <div class="map-card"><svg id="natSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div class="destinations" id="grid"></div>
+</div>
+
+<!-- VUE 2 : CARTE D'UNE RÉGION -->
+<div id="viewRegion" style="display:none">
+  <button class="back" id="backBtn">← Carte du Sénégal</button>
+  <div class="map-info">
+    <small id="rTag"></small>
+    <h3 id="rTitle"></h3>
+    <p id="rText"></p>
   </div>
-  <article class="detail" aria-live="polite"><img id="region-image" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1100&q=80" alt="Paysage du Sénégal"><div class="detail-body"><small id="region-kicker">Région sélectionnée</small><h3 id="region-title">Dakar</h3><p id="region-desc">Entre océan Atlantique, mémoire, création contemporaine et vie urbaine, Dakar ouvre une porte vibrante sur le Sénégal.</p><a class="btn" href="#destinations">Voir des idées de découverte ↗</a></div></article>
- </div>
+  <div class="map-card"><svg id="regSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div class="sites" id="sites"></div>
+</div>
+
+</div>
 </section>
-<section id="destinations">
- <div class="section-head"><div class="kicker">Carnet de découvertes</div><h2>Des lieux qui méritent le détour.</h2><p>Quelques destinations pour donner le ton. Les textes et visuels pourront ensuite être enrichis avec des contenus validés, des crédits photo et des ressources patrimoniales.</p></div>
- <div class="cards">
-  <article class="place"><img loading="lazy" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80" alt="Paysage naturel africain"><div class="place-body"><div class="tag">Nature · Delta</div><h3>Le Sine-Saloum</h3><p>Un monde d’îles, de bolongs et de mangroves, où l’eau dessine des itinéraires paisibles.</p><a class="text-link" href="#explorer">Explorer la région ↗</a></div></article>
-  <article class="place"><img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Dunes et paysage désertique"><div class="place-body"><div class="tag">Paysage · Littoral</div><h3>Les dunes de Lompoul</h3><p>Un paysage de sable et de lumière qui invite à ralentir et à contempler les grands espaces.</p><a class="text-link" href="#explorer">Explorer la région ↗</a></div></article>
-  <article class="place"><img loading="lazy" src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=900&q=80" alt="Architecture historique et rue"><div class="place-body"><div class="tag">Histoire · Patrimoine</div><h3>Saint-Louis</h3><p>Une ville d’estuaire marquée par l’architecture, les arts et une histoire singulière.</p><a class="text-link" href="#explorer">Explorer la région ↗</a></div></article>
- </div>
-</section>
-<section class="feature" id="concept"><div><div class="kicker">Le concept</div><h2>Le patrimoine devient une expérience.</h2><p>Sénégal Immersif a vocation à réunir découverte territoriale, récits culturels et outils numériques. À terme, la plateforme pourra accueillir des panoramas 360°, des capsules audio, des parcours thématiques et des contenus accessibles sur mobile ou casque VR.</p><a class="btn" href="#explorer">Repartir à l’exploration</a></div><img loading="lazy" src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85" alt="Paysage de voyage en Afrique de l'Ouest"></section>
-</main>
-<footer><strong>SÉNÉGAL IMMERSIF</strong><span>Prototype de présentation · Contenus à vérifier et enrichir</span><span>© 2026</span></footer>
+
+<footer>
+SÉNÉGAL IMMERSIF © 2026
+<div class="credit">Prototype numérique • Limites : geoBoundaries • Photos : Wikipédia / Wikimedia Commons</div>
+</footer>
+
 <script>
-const data={
-dakar:{name:"Dakar",desc:"Entre océan Atlantique, mémoire, création contemporaine et vie urbaine, Dakar ouvre une porte vibrante sur le Sénégal.",image:"https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1100&q=80"},
-saintlouis:{name:"Saint-Louis",desc:"Une région d’estuaire, de patrimoine bâti, de fleuve et de biodiversité, avec des paysages qui racontent plusieurs histoires du Sénégal.",image:"https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1100&q=80"},
-thies:{name:"Thiès",desc:"Des savoir-faire, des paysages côtiers et des portes d’entrée vers des espaces naturels et culturels variés.",image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=80"},
-louga:{name:"Louga",desc:"Terre de traditions, de culture pastorale et de routes vers les grands espaces du nord-ouest sénégalais.",image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=80"},
-matam:{name:"Matam",desc:"Le fleuve Sénégal, les cultures riveraines et les paysages sahéliens composent une identité territoriale forte.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-diourbel:{name:"Diourbel",desc:"Un territoire au cœur des traditions religieuses, de l’artisanat et des circulations culturelles du centre du pays.",image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1100&q=80"},
-fatick:{name:"Fatick",desc:"Entre îles, bolongs, mangroves et patrimoine sérère, la région offre une lecture intime des paysages du delta.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-kaffrine:{name:"Kaffrine",desc:"Des terroirs du centre, des traditions vivantes et des paysages ruraux à découvrir au fil des saisons.",image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1100&q=80"},
-tambacounda:{name:"Tambacounda",desc:"Grande région de transition vers l’est, entre savanes, parcs, villages et routes de découverte.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-kaolack:{name:"Kaolack",desc:"Carrefour commercial et culturel, la région relie les paysages du Saloum aux traditions du centre.",image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1100&q=80"},
-kolda:{name:"Kolda",desc:"Une Casamance intérieure faite de forêts, de cours d’eau, de cultures et d’hospitalité.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-sedhiou:{name:"Sédhiou",desc:"Au fil du fleuve Casamance, des paysages verdoyants et des patrimoines culturels invitent à sortir des itinéraires classiques.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-ziguinchor:{name:"Ziguinchor",desc:"Mangroves, villages, traditions et littoral composent une région riche en expériences culturelles et naturelles.",image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1100&q=80"},
-kedougou:{name:"Kédougou",desc:"Reliefs, cascades, paysages de savane et patrimoine des communautés font de l’est-sud un territoire singulier.",image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=80"}
+/* =====================================================
+   DONNÉES : régions + sites touristiques
+   lat/lon = position GPS du site (corrigée automatiquement
+   avec Wikipédia quand c'est possible)
+===================================================== */
+const DATA = {
+
+"Dakar":{tag:"CAPITALE • OCÉAN",
+intro:"Capitale du Sénégal, Dakar combine océan, patrimoine, création contemporaine, gastronomie et vie culturelle. Elle occupe la presqu'île du Cap-Vert, le point le plus occidental de l'Afrique continentale.",
+sites:[
+{n:"Monument de la Renaissance africaine",lat:14.7222,lon:-17.4944,wp:["Monument de la Renaissance africaine"],q:"Monument de la Renaissance africaine Dakar",t:"Inaugurée en 2010 sur la colline des Mamelles, cette statue de bronze d'environ 49 mètres représente un homme, une femme et un enfant tournés vers l'avenir. Elle est l'une des plus hautes statues du monde et un symbole de la fierté africaine."},
+{n:"Île de Gorée",lat:14.6674,lon:-17.3984,wp:["Île de Gorée","Gorée"],q:"Île de Gorée Sénégal",t:"Petite île face à Dakar, classée à l'UNESCO, Gorée est célèbre pour la Maison des Esclaves et pour sa mémoire de la traite atlantique. Ses ruelles colorées, ses maisons coloniales et ses artistes en font un lieu de mémoire et de promenade."},
+{n:"Lac Rose (Lac Retba)",lat:14.8403,lon:-17.2305,wp:["Lac Rose","Lac Retba"],q:"Lac Rose Retba Sénégal",t:"Ce lac au bord de l'Atlantique doit sa couleur rose à des micro-organismes dans une eau très salée. Les sauniers y récoltent le sel à la main, et c'est aussi l'ancienne arrivée du rallye Paris-Dakar."}
+]},
+
+"Saint-Louis":{tag:"PATRIMOINE • HISTOIRE",
+intro:"Au nord du pays, la région de Saint-Louis est marquée par son patrimoine colonial, son identité culturelle et le fleuve Sénégal qui la borde jusqu'à l'océan.",
+sites:[
+{n:"Île de Saint-Louis",lat:16.0230,lon:-16.5030,wp:["Île de Saint-Louis","Saint-Louis (Sénégal)"],q:"Île de Saint-Louis Sénégal UNESCO",t:"Fondée au XVIIe siècle par les Français, elle fut la première capitale de l'Afrique-Occidentale française et du Sénégal. Son plan en damier, ses maisons à balcons en fer forgé et ses quais lui valent son inscription à l'UNESCO."},
+{n:"Pont Faidherbe",lat:16.0200,lon:-16.4960,wp:["Pont Faidherbe"],q:"Pont Faidherbe Saint-Louis",t:"Ce pont métallique relie l'île au continent au-dessus du fleuve Sénégal. Inauguré à la fin du XIXe siècle, il est devenu l'emblème de la ville."},
+{n:"Parc national des oiseaux du Djoudj",lat:16.4000,lon:-16.2600,wp:["Parc national des oiseaux du Djoudj"],q:"Parc national des oiseaux du Djoudj",t:"Sanctuaire classé à l'UNESCO dans le delta du fleuve, il accueille chaque hiver des centaines de milliers d'oiseaux migrateurs, dont de grands groupes de pélicans blancs, flamants et spatules."}
+]},
+
+"Thiès":{tag:"ARTISANAT • CULTURE",
+intro:"Territoire connu pour ses savoir-faire, son artisanat, sa culture et sa proximité avec plusieurs grands sites touristiques de la Petite-Côte.",
+sites:[
+{n:"Réserve de Bandia",lat:14.5800,lon:-17.0000,wp:["Réserve de Bandia"],q:"Réserve de Bandia Sénégal",t:"À une heure de Dakar, cette réserve privée permet d'observer en safari des girafes, rhinocéros, zèbres, buffles et antilopes, ainsi que d'anciens baobabs."},
+{n:"Joal-Fadiouth",lat:14.1600,lon:-16.8450,wp:["Joal-Fadiouth"],q:"Joal-Fadiouth",t:"Joal est la ville natale de Léopold Sédar Senghor, premier président du Sénégal. Reliée par une passerelle en bois, l'île de Fadiouth est construite sur des coquillages et abrite un cimetière où chrétiens et musulmans reposent côte à côte."},
+{n:"Manufactures sénégalaises des arts décoratifs",lat:14.7900,lon:-16.9350,wp:["Manufactures sénégalaises des arts décoratifs"],q:"Manufactures sénégalaises des arts décoratifs Thiès",t:"Créées à Thiès dans les années 1960, ces manufactures perpétuent la tapisserie d'art, réalisée à la main sur des métiers à tisser à partir de cartons d'artistes sénégalais."}
+]},
+
+"Diourbel":{tag:"CULTURE • TERROIR",
+intro:"Un territoire fortement marqué par la culture, les traditions et le patrimoine religieux, berceau de la confrérie mouride.",
+sites:[
+{n:"Grande Mosquée de Touba",lat:14.8500,lon:-15.8833,wp:["Grande Mosquée de Touba","Touba"],q:"Grande Mosquée de Touba",t:"Touba est la ville sainte du mouridisme, fondée en 1887 par Cheikh Ahmadou Bamba. Sa Grande Mosquée, achevée dans les années 1960, est dominée par un minaret de plus de 80 mètres. Chaque année, le Magal rassemble ici des millions de fidèles pour commémorer le départ en exil du fondateur."}
+]},
+
+"Fatick":{tag:"TERROIR • NATURE",
+intro:"Entre bolongs, mangroves et terroirs sereer, Fatick ouvre la porte vers une autre lecture des paysages sénégalais.",
+sites:[
+{n:"Delta du Saloum",lat:13.8500,lon:-16.6500,wp:["Parc national du delta du Saloum"],q:"Parc national du delta du Saloum",t:"Classé à l'UNESCO, ce labyrinthe de bras de mer, d'îlots, de mangroves et de tannes abrite une riche faune d'oiseaux et des amas coquilliers témoins d'une occupation humaine très ancienne."},
+{n:"Foundiougne",lat:14.1297,lon:-16.4686,wp:["Foundiougne"],q:"Foundiougne Sénégal",t:"Petite ville au bord du Saloum, Foundiougne est un point de départ des excursions en pirogue à travers les îles et la mangrove du delta."}
+]},
+
+"Kaolack":{tag:"TERROIR • CULTURE",
+intro:"Une importante zone commerciale, religieuse et culturelle située au cœur des échanges entre plusieurs territoires, au bord du Saloum.",
+sites:[
+{n:"Médina Baye",lat:14.1400,lon:-16.0600,wp:["Médina Baye"],q:"Médina Baye Kaolack",t:"Quartier de Kaolack et centre mondial de la branche Niassène de la confrérie tidjane, fondé par Cheikh Ibrahima Niass. Sa grande mosquée attire de nombreux pèlerins de toute l'Afrique de l'Ouest."},
+{n:"Kaolack et son grand marché",lat:14.1500,lon:-16.0800,wp:["Kaolack"],q:"Kaolack Sénégal marché",t:"L'un des plus vastes marchés du pays, il reflète l'importance commerciale de Kaolack, grand carrefour de l'arachide et du sel."}
+]},
+
+"Kaffrine":{tag:"NATURE • TERROIR",
+intro:"Un territoire intérieur marqué par les paysages ruraux, les traditions agricoles et un patrimoine archéologique unique.",
+sites:[
+{n:"Sine Ngayène",lat:13.7300,lon:-14.7800,wp:["Sine Ngayène"],q:"Sine Ngayène cercles mégalithiques",t:"Ce site abrite l'un des plus grands ensembles de cercles de pierres de la Sénégambie. Ces mégalithes, érigés il y a plus d'un millénaire, sont inscrits à l'UNESCO."},
+{n:"Wanar",lat:13.9500,lon:-15.0000,wp:["Wanar"],q:"Wanar mégalithes Sénégal",t:"Autre grand site de la zone mégalithique de Sénégambie, Wanar compte de nombreux cercles de pierres dressées, dont certaines en forme de lyre, qui interrogent encore les archéologues."}
+]},
+
+"Tambacounda":{tag:"AVENTURE • NATURE",
+intro:"Porte d'entrée vers les grands espaces naturels de l'Est du Sénégal, la région de Tambacounda est la plus vaste du pays.",
+sites:[
+{n:"Parc national du Niokolo-Koba",lat:13.0000,lon:-12.8000,wp:["Parc national du Niokolo-Koba"],q:"Parc national du Niokolo-Koba",t:"Classé à l'UNESCO, c'est l'une des plus grandes aires protégées d'Afrique de l'Ouest. Il abrite des lions, des éléphants, des hippopotames, des chimpanzés, ainsi qu'une riche avifaune au bord de la Gambie."},
+{n:"Bakel",lat:14.9000,lon:-12.4667,wp:["Bakel"],q:"Bakel Sénégal",t:"Ville de l'extrême est, au bord du fleuve Sénégal, Bakel domine la confluence avec la Falémé. Son fort et sa position stratégique racontent l'histoire des échanges et de la présence coloniale dans la vallée."}
+]},
+
+"Kédougou":{tag:"AVENTURE • PAYSAGES",
+intro:"Montagnes, cascades, cultures et grands paysages font de Kédougou un territoire particulièrement riche en expériences, au pied du Fouta-Djalon.",
+sites:[
+{n:"Pays Bassari",lat:12.6000,lon:-12.5000,wp:["Pays Bassari"],q:"Pays Bassari paysages culturels UNESCO",t:"Paysages culturels classés à l'UNESCO, où vivent les Bassari, Peul et Bédik. Villages perchés, rites d'initiation et masques traditionnels y perpétuent des cultures anciennes."},
+{n:"Chutes de Dindéfelo",lat:12.3700,lon:-12.3200,wp:["Dindéfelo","Chutes de Dindéfelo"],q:"Chutes de Dindéfelo",t:"Cascade de plusieurs dizaines de mètres tombant dans une vasque naturelle entourée de végétation. La randonnée qui y mène traverse un paysage de falaises et de forêt-galerie."},
+{n:"Bandafassi",lat:12.5333,lon:-12.3167,wp:["Bandafassi"],q:"Bandafassi Sénégal",t:"Village et point de départ de randonnées vers les villages bédik, Bandafassi offre des panoramas sur les collines et une rencontre avec les traditions de la région."}
+]},
+
+"Kolda":{tag:"CASAMANCE • NATURE",
+intro:"Au cœur de la Haute-Casamance, Kolda se distingue par ses forêts, ses marchés et ses traditions peules et mandingues.",
+sites:[
+{n:"Marché de Diaobé",lat:12.7800,lon:-14.5500,wp:["Diaobé"],q:"Diaobé Sénégal marché",t:"Grand marché international aux portes de la Guinée et de la Guinée-Bissau, Diaobé réunit chaque semaine des commerçants de toute la sous-région."},
+{n:"Médina Gounass",lat:13.0000,lon:-14.1000,wp:["Médina Gounass"],q:"Médina Gounass Sénégal",t:"Forêt et village de la zone de Vélingara, connus pour leur grande vie religieuse et leur couvert végétal, symboles de l'identité de la Haute-Casamance."}
+]},
+
+"Sédhiou":{tag:"CASAMANCE • CULTURE",
+intro:"Territoire de Casamance marqué par le fleuve, ses paysages de bolongs, ses traditions et son patrimoine historique.",
+sites:[
+{n:"Fort de Sédhiou",lat:12.7081,lon:-15.5569,wp:["Sédhiou"],q:"Fort de Sédhiou",t:"Établi au XIXe siècle par les Français sur les rives du fleuve Casamance, ce fort rappelle le rôle de Sédhiou comme comptoir et centre administratif de la région."},
+{n:"Le fleuve Casamance (secteur de Sédhiou)",lat:12.6900,lon:-15.5300,wp:[],q:"Casamance fleuve bolongs",t:"Le fleuve Casamance et ses bras de mer irriguent paysages de mangroves, riziculture et villages de pêcheurs, que l'on découvre en pirogue."}
+]},
+
+"Ziguinchor":{tag:"CASAMANCE • OCÉAN",
+intro:"Porte d'entrée vers la Casamance, ses paysages verdoyants, ses cultures diola et ses plages.",
+sites:[
+{n:"Cap Skirring",lat:12.3950,lon:-16.7450,wp:["Cap Skirring"],q:"Cap Skirring Sénégal",t:"Station balnéaire du sud-ouest, Cap Skirring offre de longues plages de sable blond bordées de cocotiers, des pêcheurs et des hôtels face à l'océan."},
+{n:"Île de Carabane",lat:12.5500,lon:-16.7167,wp:["Carabane","Île de Carabane"],q:"Île de Carabane Casamance",t:"À l'embouchure du fleuve Casamance, Carabane fut l'un des premiers comptoirs français de la région. On y voit encore une ancienne église et des bâtiments coloniaux dans un décor de mangrove."},
+{n:"Cases à étage de Mlomp",lat:12.5800,lon:-16.6200,wp:["Mlomp"],q:"Mlomp cases à étage Casamance",t:"Ces grandes maisons diola à étage, construites en terre, sont un exemple remarquable d'architecture traditionnelle de Basse-Casamance."}
+]},
+
+"Louga":{tag:"NATURE • CULTURE",
+intro:"Un territoire entre culture, élevage, traditions et paysages du nord-ouest du Sénégal, du littoral aux grands espaces du Ferlo.",
+sites:[
+{n:"Désert de Lompoul",lat:15.4000,lon:-16.8200,wp:["Désert de Lompoul","Lompoul"],q:"Désert de Lompoul",t:"Petit désert de dunes de sable ocre entre Dakar et Saint-Louis, Lompoul se visite à dos de dromadaire, avec des nuits sous tente et des couchers de soleil spectaculaires."},
+{n:"Linguère et le Ferlo",lat:15.3900,lon:-15.1200,wp:["Linguère"],q:"Ferlo Sénégal",t:"Vaste zone sahélienne d'élevage, le Ferlo est le pays des pasteurs peuls et de leurs troupeaux, avec des réserves de faune et des paysages de savane ouverte. Linguère en est la principale ville."}
+]},
+
+"Matam":{tag:"FLEUVE • CULTURE",
+intro:"Un territoire du nord-est du Sénégal fortement lié au fleuve Sénégal et aux cultures de la vallée, le Fouta Toro.",
+sites:[
+{n:"Matam et le fleuve Sénégal",lat:15.6558,lon:-13.2554,wp:["Matam"],q:"Matam Sénégal fleuve",t:"Le fleuve structure toute la vie de la région : cultures de décrue, pêche, villages traditionnels et sites de mémoire du Fouta Toro, ancien royaume peul."},
+{n:"Ourossogui",lat:15.6000,lon:-13.3200,wp:["Ourossogui"],q:"Ourossogui Sénégal",t:"Principal centre urbain et commercial de la région de Matam, Ourossogui est un carrefour animé de la vallée, connu pour son grand marché hebdomadaire."}
+]}
 };
-document.querySelectorAll(".region").forEach(el=>el.addEventListener("click",()=>{
- document.querySelectorAll(".region").forEach(x=>x.classList.remove("active"));el.classList.add("active");
- const r=data[el.dataset.id];if(!r)return;
- document.getElementById("region-title").textContent=r.name;
- document.getElementById("region-desc").textContent=r.desc;
- document.getElementById("region-image").src=r.image;
- document.getElementById("region-image").alt="Illustration de la région de "+r.name;
- document.getElementById("region-kicker").textContent="Région sélectionnée";
-}));
+
+
+/* =====================================================
+   SITES SUPPLÉMENTAIRES (2 de plus par région)
+===================================================== */
+const EXTRA = {
+"Dakar":[
+{n:"Pointe des Almadies",lat:14.7450,lon:-17.5300,wp:["Pointe des Almadies"],q:"Pointe des Almadies Dakar",t:"Située à l'extrémité nord-ouest de la presqu'île du Cap-Vert, la pointe des Almadies est le point le plus à l'ouest de l'Afrique continentale. Les rochers battus par l'Atlantique, les restaurants face à la mer et les couchers de soleil en font un lieu de promenade très apprécié des Dakarois."},
+{n:"Îles de la Madeleine",lat:14.6400,lon:-17.4700,wp:["Parc national des îles de la Madeleine","Îles de la Madeleine"],q:"Parc national des îles de la Madeleine Dakar",t:"À quelques kilomètres du centre de Dakar, ce petit archipel est l'un des plus petits parcs nationaux d'Afrique. Il abrite des colonies d'oiseaux marins, notamment des phaétons à bec rouge, et se visite en pirogue."}
+],
+"Saint-Louis":[
+{n:"Langue de Barbarie",lat:15.9500,lon:-16.5000,wp:["Parc national de la Langue de Barbarie","Langue de Barbarie"],q:"Parc national de la Langue de Barbarie",t:"Étroite bande de sable entre l'océan Atlantique et le fleuve Sénégal, la Langue de Barbarie abrite un parc national connu pour ses oiseaux migrateurs et ses pélicans. Les pêcheurs du quartier de Guet Ndar y mettent à l'eau leurs pirogues colorées."},
+{n:"Fort de Podor",lat:16.6500,lon:-14.9667,wp:["Podor"],q:"Podor Sénégal fort",t:"Ville du nord, au bord du fleuve Sénégal, Podor est dominée par un fort construit au XVIIIe siècle puis reconstruit au XIXe par les Français pour contrôler le commerce sur le fleuve. Elle conserve de belles maisons de l'époque coloniale et le charme d'une ville fluviale."}
+],
+"Thiès":[
+{n:"Popenguine",lat:14.5500,lon:-17.1167,wp:["Popenguine"],q:"Popenguine Sénégal",t:"Village de la Petite-Côte et sa réserve naturelle communautaire, Popenguine mêle falaises, plages et collines boisées. Chaque année, à la Pentecôte, des dizaines de milliers de pèlerins catholiques y marchent vers le sanctuaire de Notre-Dame de la Délivrance."},
+{n:"Lagune de la Somone",lat:14.4900,lon:-17.0700,wp:["Lagune de la Somone","Somone"],q:"Somone lagune Sénégal",t:"Lagune bordée de mangrove près de Saly, la réserve de la Somone est un lieu de promenade en pirogue et d'observation d'oiseaux. Les communautés locales participent à la protection de la mangrove."}
+],
+"Diourbel":[
+{n:"Diourbel, ville de l'exil de Cheikh Ahmadou Bamba",lat:14.6550,lon:-16.2310,wp:["Diourbel"],q:"Diourbel Sénégal",t:"Chef-lieu de la région, Diourbel fut un centre de l'économie arachidière. C'est aussi là que Cheikh Ahmadou Bamba, fondateur du mouridisme, fut assigné à résidence par l'administration coloniale de 1912 à 1927, ce qui en fait un lieu important de l'histoire religieuse du Sénégal."},
+{n:"Bambey",lat:14.7000,lon:-16.4500,wp:["Bambey"],q:"Bambey Sénégal",t:"Bambey est une ville du bassin arachidier connue pour son centre de recherche agronomique créé à l'époque coloniale, qui a joué un rôle important dans l'amélioration des cultures de l'arachide et du mil au Sénégal."}
+],
+"Fatick":[
+{n:"Mar Lodj",lat:13.9500,lon:-16.6000,wp:["Mar Lodj"],q:"Mar Lodj Sénégal",t:"Île du delta du Saloum, Mar Lodj se visite en pirogue à travers la mangrove. On y découvre la vie des villages sereer, leurs traditions et leurs paysages d'eau."},
+{n:"Palmarin",lat:14.0000,lon:-16.7667,wp:["Palmarin"],q:"Palmarin Sénégal",t:"Entre océan, lagunes et palmiers rôniers, Palmarin est une réserve naturelle et un territoire de villages sereer, apprécié pour ses plages calmes et ses oiseaux."}
+],
+"Kaolack":[
+{n:"Kahone",lat:14.1167,lon:-16.0167,wp:["Kahone"],q:"Kahone Sénégal",t:"Située près de Kaolack, Kahone fut la capitale du royaume du Saloum. Ce lieu chargé d'histoire rappelle les anciens souverains et l'histoire des royaumes de la région du Saloum."},
+{n:"Nioro du Rip",lat:13.7500,lon:-15.8000,wp:["Nioro du Rip"],q:"Nioro du Rip Sénégal",t:"Ville du sud du Saloum, Nioro du Rip est liée à Maba Diakhou Bâ, chef religieux et guerrier du XIXe siècle qui y établit le royaume du Rip. Elle garde la mémoire de cette période de l'histoire sénégalaise."}
+],
+"Kaffrine":[
+{n:"Kaffrine",lat:14.1050,lon:-15.5500,wp:["Kaffrine"],q:"Kaffrine Sénégal",t:"Chef-lieu de la région, Kaffrine est une ville du bassin arachidier et un carrefour routier important du centre du pays. C'est un bon point de départ pour visiter les cercles mégalithiques de la région."},
+{n:"Koungheul",lat:13.9833,lon:-14.8000,wp:["Koungheul"],q:"Koungheul Sénégal",t:"Ville de l'est de la région, Koungheul est un carrefour commercial sur l'axe qui relie Kaolack à Tambacounda. Son marché attire commerçants et éleveurs de toute la zone."}
+],
+"Tambacounda":[
+{n:"Simenti (Niokolo-Koba)",lat:13.0333,lon:-13.3000,wp:[],q:"Simenti Niokolo-Koba",t:"Au cœur du parc du Niokolo-Koba, Simenti est un point d'observation au bord de la Gambie, fréquenté par des hippopotames, des antilopes et de nombreux oiseaux. C'est un point de départ classique des safaris dans le parc."},
+{n:"Kidira",lat:14.4572,lon:-12.2128,wp:["Kidira"],q:"Kidira Sénégal",t:"Ville frontière avec le Mali, au bord de la Falémé, Kidira est un carrefour de commerce où passe la ligne de chemin de fer Dakar-Niger. Elle illustre le rôle d'axe entre le Sénégal et l'intérieur de l'Afrique de l'Ouest."}
+],
+"Kédougou":[
+{n:"Iwol",lat:12.5700,lon:-12.4000,wp:["Iwol"],q:"Iwol village Bédik Sénégal",t:"Village bédik perché sur une colline près de Bandafassi, Iwol est connu pour ses cases rondes en terre et ses terrasses de culture. Il fait partie du paysage culturel du Pays Bassari classé à l'UNESCO."},
+{n:"Salémata",lat:12.6333,lon:-12.8167,wp:["Salémata"],q:"Salémata Sénégal",t:"Petite ville à l'est de Kédougou, Salémata est un centre de la culture bassari et un point de départ pour découvrir les villages des collines, leurs traditions et leurs masques."}
+],
+"Kolda":[
+{n:"Kolda et le Fouladou",lat:12.8833,lon:-14.9500,wp:["Kolda"],q:"Kolda Sénégal",t:"Chef-lieu de la Haute-Casamance, Kolda se trouve sur le fleuve Casamance, dans le pays du Fouladou, ancien royaume peul. La ville vit au rythme de son marché et de ses traditions peules et mandingues."},
+{n:"Vélingara",lat:13.1500,lon:-14.1167,wp:["Vélingara"],q:"Vélingara Sénégal",t:"Grande ville de l'est de la région, Vélingara est un carrefour commercial vers la Gambie et la Guinée-Bissau. Elle est proche du grand marché de Diaobé et de la forêt de Médina Gounass."}
+],
+"Sédhiou":[
+{n:"Goudomp",lat:12.5667,lon:-15.8667,wp:["Goudomp"],q:"Goudomp Sénégal",t:"Petite ville du sud de la région, Goudomp est située au bord du Soungrougrou, un affluent du fleuve Casamance. C'est un bon point de départ pour découvrir les villages, les rizières et la vie rurale de la Casamance."},
+{n:"Marsassoum",lat:12.8167,lon:-15.9667,wp:["Marsassoum"],q:"Marsassoum Sénégal",t:"Ville au bord de la Casamance, Marsassoum fut un petit port fluvial pour le commerce de la région. On y découvre la vie du fleuve, entre pirogues, pêche et rizières."}
+],
+"Ziguinchor":[
+{n:"Oussouye",lat:12.4833,lon:-16.5333,wp:["Oussouye"],q:"Oussouye Casamance",t:"Capitale de la culture diola de Basse-Casamance, Oussouye est le siège du roi d'Oussouye, gardien des traditions et des forêts sacrées. La ville est un point de départ vers Carabane, Cap Skirring et les villages de la région."},
+{n:"Kabrousse",lat:12.3350,lon:-16.7160,wp:["Kabrousse"],q:"Kabrousse Casamance",t:"Village du bord de l'océan, près de la frontière avec la Guinée-Bissau, Kabrousse est le village d'Aline Sitoé Diatta, figure de la résistance diola à l'administration coloniale dans les années 1940. Elle est aujourd'hui un symbole de courage et de fierté en Casamance."}
+],
+"Louga":[
+{n:"Lac de Guiers",lat:16.2000,lon:-15.8500,wp:["Lac de Guiers"],q:"Lac de Guiers Sénégal",t:"Plus grand lac d'eau douce du Sénégal, le lac de Guiers est alimenté par le fleuve Sénégal et sert de réserve d'eau à une grande partie du pays, dont Dakar. Il attire pêcheurs, éleveurs et oiseaux d'eau."},
+{n:"Kébémer",lat:15.3667,lon:-16.4500,wp:["Kébémer"],q:"Kébémer Sénégal",t:"Ville du Cayor, entre Louga et Dakar, Kébémer est une étape importante sur la route du nord. Elle se trouve près du désert de Lompoul et de plusieurs villages de la région."}
+],
+"Matam":[
+{n:"Ranérou et le Ferlo",lat:15.2967,lon:-13.9667,wp:["Ranérou"],q:"Ranérou Ferlo Sénégal",t:"Ranérou est une zone d'élevage au cœur du Ferlo. Les pasteurs peuls y conduisent leurs troupeaux à travers la savane sahélienne, dans une région où se trouvent des réserves de faune."},
+{n:"Kanel",lat:15.4833,lon:-13.1833,wp:["Kanel"],q:"Kanel Sénégal",t:"Kanel est une ville de la vallée du fleuve Sénégal, dans le Fouta Toro. On y découvre les cultures de décrue, la vie des pêcheurs et l'architecture traditionnelle de la vallée."}
+]
+};
+Object.keys(EXTRA).forEach(k=>{ DATA[k].sites = DATA[k].sites.concat(EXTRA[k]); });
+
+const ORDER = ["Dakar","Saint-Louis","Thiès","Diourbel","Fatick","Kaolack","Kaffrine","Tambacounda","Kédougou","Kolda","Sédhiou","Ziguinchor","Louga","Matam"];
+
+/* =====================================================
+   FORMES DES RÉGIONS
+   1) on essaie de charger les VRAIES limites (geoBoundaries)
+   2) sinon, carte simplifiée de secours
+===================================================== */
+const NAMEKEYS = {};
+ORDER.forEach(n=>{ NAMEKEYS[norm(n)] = n; });
+
+function norm(s){
+  return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z]/g,"");
+}
+
+function regionNameOf(props){
+  const vals = Object.values(props||{}).filter(v=>typeof v==="string" && v.length<50);
+  for(const v of vals){ const k = norm(v); if(NAMEKEYS[k]) return NAMEKEYS[k]; }
+  for(const v of vals){ const k = norm(v); for(const key in NAMEKEYS){ if(k.indexOf(key)!==-1) return NAMEKEYS[key]; } }
+  return null;
+}
+
+function toFeatures(g){
+  const out = {};
+  (g.features||[]).forEach(f=>{
+    const name = regionNameOf(f.properties);
+    if(!name || !f.geometry) return;
+    const polys = f.geometry.type==="Polygon" ? [f.geometry.coordinates] : f.geometry.type==="MultiPolygon" ? f.geometry.coordinates : [];
+    out[name] = (out[name]||[]).concat(polys);
+  });
+  const list = Object.keys(out).map(n=>({name:n,polys:out[n]}));
+  return list.length>=12 ? list : [];
+}
+
+function withTimeout(p,ms){
+  return Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),ms))]);
+}
+async function getJSON(url){
+  const r = await withTimeout(fetch(url),9000);
+  if(!r.ok) throw new Error("http");
+  return r.json();
+}
+
+const GEO_URLS = [
+  "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/main/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson",
+  "https://raw.githubusercontent.com/wmgeolab/geoBoundaries/main/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson",
+  "https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson"
+];
+
+async function loadGeo(){
+  for(const u of GEO_URLS){
+    try{ const f = toFeatures(await getJSON(u)); if(f.length) return {features:f,real:true}; }catch(e){}
+  }
+  try{
+    const meta = await getJSON("https://www.geoboundaries.org/api/current/gbOpen/SEN/ADM1/");
+    const m = Array.isArray(meta)?meta[0]:meta;
+    for(const k of ["simplifiedGeometryGeoJSON","gjDownloadURL"]){
+      if(m && m[k]){ try{ const f = toFeatures(await getJSON(m[k])); if(f.length) return {features:f,real:true}; }catch(e){} }
+    }
+  }catch(e){}
+  return {features:fallbackFeatures(),real:false};
+}
+
+/* carte simplifiée de secours (pixels -> longitude/latitude) */
+const FB = {
+"Saint-Louis":"95,50 200,18 310,18 320,100 112,100 100,75",
+"Matam":"310,18 440,18 475,95 455,185 340,175 320,100",
+"Louga":"112,100 320,100 340,175 215,172 150,172 135,165 105,140",
+"Thiès":"105,140 135,165 150,172 150,240 85,240 78,205 92,172",
+"Dakar":"40,183 78,205 85,240 62,232",
+"Diourbel":"150,172 215,172 215,240 150,240",
+"Kaffrine":"215,172 340,175 320,280 250,285 215,240",
+"Fatick":"85,240 150,240 150,300 110,300 88,270",
+"Kaolack":"150,240 215,240 250,285 240,300 150,300",
+"Tambacounda":"340,175 455,185 510,215 567,250 545,300 470,300 440,330 395,335 333,314 320,296 320,280",
+"Kédougou":"440,330 470,300 545,300 567,335 520,390 440,390",
+"Kolda":"260,320 333,314 395,335 440,330 440,390 270,385",
+"Sédhiou":"171,322 260,320 270,385 150,405 171,370",
+"Ziguinchor":"88,320 171,322 171,370 150,405 100,400 82,350"
+};
+function fallbackFeatures(){
+  return Object.keys(FB).map(n=>{
+    const ring = FB[n].split(" ").map(p=>{const a=p.split(",");return [a[0]/90-17.7,16.8-a[1]/90];});
+    ring.push(ring[0]);
+    return {name:n,polys:[[ring]]};
+  });
+}
+
+/* =====================================================
+   OUTILS CARTE
+===================================================== */
+function bboxOf(features){
+  let b={minLon:999,maxLon:-999,minLat:999,maxLat:-999};
+  features.forEach(f=>f.polys.forEach(p=>p[0].forEach(c=>{
+    if(c[0]<b.minLon)b.minLon=c[0]; if(c[0]>b.maxLon)b.maxLon=c[0];
+    if(c[1]<b.minLat)b.minLat=c[1]; if(c[1]>b.maxLat)b.maxLat=c[1];
+  })));
+  return b;
+}
+function padBox(b,f){
+  const dx=(b.maxLon-b.minLon)*f, dy=(b.maxLat-b.minLat)*f;
+  return {minLon:b.minLon-dx,maxLon:b.maxLon+dx,minLat:b.minLat-dy,maxLat:b.maxLat+dy};
+}
+function makeProj(b,W,pad){
+  const k = Math.cos(((b.minLat+b.maxLat)/2)*Math.PI/180);
+  const w = (b.maxLon-b.minLon)*k, h = (b.maxLat-b.minLat);
+  const s = (W-2*pad)/w;
+  const H = Math.round(h*s+2*pad);
+  return {W:W,H:H,pt:(lon,lat)=>[pad+(lon-b.minLon)*k*s, pad+(b.maxLat-lat)*s]};
+}
+function pathOf(f,proj){
+  let d="";
+  f.polys.forEach(poly=>poly.forEach(ring=>{
+    d += "M"+ring.map(c=>{const p=proj.pt(c[0],c[1]);return p[0].toFixed(1)+","+p[1].toFixed(1);}).join("L")+"Z";
+  }));
+  return d;
+}
+function centroidOf(f,proj){
+  let best=null,bestA=-1;
+  f.polys.forEach(poly=>{
+    const r = poly[0].map(c=>proj.pt(c[0],c[1]));
+    let a=0,cx=0,cy=0;
+    for(let i=0;i<r.length-1;i++){
+      const cr = r[i][0]*r[i+1][1]-r[i+1][0]*r[i][1];
+      a+=cr; cx+=(r[i][0]+r[i+1][0])*cr; cy+=(r[i][1]+r[i+1][1])*cr;
+    }
+    const A=Math.abs(a/2);
+    if(A>bestA && a!==0){bestA=A;best=[cx/(3*a),cy/(3*a)];}
+  });
+  if(!best){const r=f.polys[0][0].map(c=>proj.pt(c[0],c[1]));best=r[0];}
+  return best;
+}
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,text){
+  const e=document.createElementNS(NS,tag);
+  for(const k in attrs) e.setAttribute(k,attrs[k]);
+  if(text!==undefined) e.textContent=text;
+  return e;
+}
+
+/* =====================================================
+   ÉTAT
+===================================================== */
+let GEO = null;
+let currentRegion = null;
+
+/* =====================================================
+   VUE 1 : CARTE DU SÉNÉGAL
+===================================================== */
+function renderNational(){
+  const svg = document.getElementById("natSvg");
+  svg.innerHTML = "";
+  const box = padBox(bboxOf(GEO.features),0.02);
+  const proj = makeProj(box,600,6);
+  svg.setAttribute("viewBox","0 0 "+proj.W+" "+proj.H);
+  svg.appendChild(el("rect",{x:0,y:0,width:proj.W,height:proj.H,class:"sea"}));
+  GEO.features.forEach(f=>{
+    const p = el("path",{d:pathOf(f,proj),class:"reg","fill-rule":"evenodd"});
+    p.addEventListener("click",()=>openRegion(f.name));
+    svg.appendChild(p);
+  });
+  GEO.features.forEach(f=>{
+    const c = centroidOf(f,proj);
+    if(f.name==="Dakar"){
+      const r = f.polys[0][0].map(x=>proj.pt(x[0],x[1]));
+      const maxY = Math.max.apply(null,r.map(p=>p[1]));
+      const minX = Math.min.apply(null,r.map(p=>p[0]));
+      const t = el("text",{x:Math.max(minX-2,4),y:maxY+13,class:"lbl",style:"text-anchor:start;font-size:10px"},"Dakar");
+      svg.appendChild(t);
+    }else{
+      svg.appendChild(el("text",{x:c[0],y:c[1]+3,class:"lbl"},f.name));
+    }
+  });
+}
+
+/* =====================================================
+   VUE 2 : CARTE D'UNE RÉGION + SITES
+===================================================== */
+function openRegion(name){
+  const d = DATA[name]; if(!d) return;
+  currentRegion = name;
+  document.getElementById("viewMap").style.display = "none";
+  document.getElementById("viewRegion").style.display = "block";
+  document.getElementById("rTag").textContent = d.tag;
+  document.getElementById("rTitle").textContent = name;
+  document.getElementById("rText").textContent = d.intro;
+  renderRegionMap();
+  renderCards();
+  window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
+  enrichFromWikipedia(name);
+}
+
+function closeRegion(){
+  currentRegion = null;
+  document.getElementById("viewRegion").style.display = "none";
+  document.getElementById("viewMap").style.display = "block";
+  window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
+}
+
+function renderRegionMap(){
+  if(!currentRegion) return;
+  const d = DATA[currentRegion];
+  const feat = GEO.features.find(f=>f.name===currentRegion);
+  const svg = document.getElementById("regSvg");
+  svg.innerHTML = "";
+  if(!feat){ return; }
+
+  /* cadre : région + points des sites */
+  let b = bboxOf([feat]);
+  d.sites.forEach(s=>{
+    if(s.lon<b.minLon)b.minLon=s.lon; if(s.lon>b.maxLon)b.maxLon=s.lon;
+    if(s.lat<b.minLat)b.minLat=s.lat; if(s.lat>b.maxLat)b.maxLat=s.lat;
+  });
+  b = padBox(b,0.06);
+  const proj = makeProj(b,600,10);
+  svg.setAttribute("viewBox","0 0 "+proj.W+" "+proj.H);
+  svg.appendChild(el("rect",{x:0,y:0,width:proj.W,height:proj.H,class:"sea"}));
+
+  GEO.features.forEach(f=>{
+    if(f.name===currentRegion) return;
+    const p = el("path",{d:pathOf(f,proj),class:"nb","fill-rule":"evenodd"});
+    p.addEventListener("click",()=>openRegion(f.name));
+    svg.appendChild(p);
+  });
+  svg.appendChild(el("path",{d:pathOf(feat,proj),class:"focus","fill-rule":"evenodd"}));
+
+  /* noms des régions voisines */
+  GEO.features.forEach(f=>{
+    if(f.name===currentRegion) return;
+    const c = centroidOf(f,proj);
+    if(c[0]>10 && c[0]<proj.W-10 && c[1]>10 && c[1]<proj.H-10){
+      svg.appendChild(el("text",{x:c[0],y:c[1],class:"lbl",style:"opacity:.55"},f.name));
+    }
+  });
+
+  /* points des sites */
+  d.sites.forEach((s,i)=>{
+    const p = proj.pt(s.lon,s.lat);
+    const g = el("g",{class:"dot","data-i":i});
+    g.appendChild(el("circle",{cx:p[0].toFixed(1),cy:p[1].toFixed(1),r:13}));
+    g.appendChild(el("text",{x:p[0].toFixed(1),y:(p[1]+4.5).toFixed(1)},String(i+1)));
+    g.appendChild(el("text",{x:(p[0]+18).toFixed(1),y:(p[1]+5).toFixed(1),class:"nm",style:"display:none"},s.n));
+    g.addEventListener("click",()=>selectSite(i));
+    svg.appendChild(g);
+  });
+}
+
+function renderCards(){
+  const d = DATA[currentRegion];
+  const wrap = document.getElementById("sites");
+  wrap.innerHTML = "";
+  d.sites.forEach((s,i)=>{
+    const card = document.createElement("div");
+    card.className = "site"; card.id = "site"+i;
+    const ph = document.createElement("div");
+    ph.className = "ph"; ph.textContent = "📍 "+s.n;
+    const num = document.createElement("div");
+    num.className = "num"; num.textContent = i+1;
+    ph.appendChild(num);
+    const body = document.createElement("div");
+    body.className = "body";
+    const h = document.createElement("h4"); h.textContent = s.n;
+    const gps = document.createElement("div"); gps.className = "gps";
+    gps.textContent = "GPS : "+s.lat.toFixed(4)+"° N, "+Math.abs(s.lon).toFixed(4)+"° O";
+    const p = document.createElement("p"); p.textContent = s.t;
+    body.appendChild(h); body.appendChild(gps); body.appendChild(p);
+    if(s.moreTitle){
+      const det = document.createElement("details");
+      det.addEventListener("click",ev=>ev.stopPropagation());
+      const sm = document.createElement("summary"); sm.textContent = "Lire l'histoire complète";
+      const box = document.createElement("div"); box.className = "full";
+      det.appendChild(sm); det.appendChild(box);
+      det.addEventListener("toggle",()=>{ if(det.open) loadFull(s,box); });
+      body.appendChild(det);
+    }
+    card.appendChild(ph); card.appendChild(body);
+    card.addEventListener("click",()=>selectSite(i,true));
+    wrap.appendChild(card);
+    if(s.img) putPhoto(ph,s.img);
+  });
+}
+
+function putPhoto(box,src){
+  const img = new Image();
+  img.alt = "";
+  img.onload = ()=>box.insertBefore(img,box.firstChild);
+  img.src = src;
+}
+
+function selectSite(i,fromCard){
+  document.querySelectorAll(".dot").forEach(g=>{
+    const on = Number(g.dataset.i)===i;
+    g.classList.toggle("sel",on);
+    const nm = g.querySelector(".nm"); if(nm) nm.style.display = on?"block":"none";
+  });
+  document.querySelectorAll(".site").forEach((c,k)=>c.classList.toggle("sel",k===i));
+  if(!fromCard){
+    document.getElementById("site"+i).scrollIntoView({behavior:"smooth",block:"center"});
+  }else{
+    document.getElementById("regSvg").scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+
+/* =====================================================
+   WIKIPÉDIA : photos + position GPS affinée
+===================================================== */
+const photoSearchCache = {};
+async function searchPhoto(q){
+  if(photoSearchCache[q]!==undefined) return photoSearchCache[q];
+  const url = "https://fr.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch="+encodeURIComponent(q)+"&gsrlimit=6&prop=pageimages&piprop=thumbnail&pithumbsize=900&format=json&origin=*";
+  try{
+    const j = await getJSON(url);
+    const pages = Object.values((j.query||{}).pages||{}).sort((a,b)=>a.index-b.index);
+    const p = pages.find(x=>x.thumbnail);
+    photoSearchCache[q] = p ? p.thumbnail.source : null;
+  }catch(e){ photoSearchCache[q] = null; }
+  return photoSearchCache[q];
+}
+
+function distDeg(a,b,c,d){ return Math.max(Math.abs(a-c),Math.abs(b-d)); }
+
+async function enrichFromWikipedia(name){
+  const d = DATA[name];
+  if(d.enriched){ return; }
+  d.enriched = true;
+  const titles = [];
+  d.sites.forEach(s=>(s.wp||[]).forEach(t=>{ if(titles.indexOf(t)===-1) titles.push(t); }));
+  let resolve = ()=>null;
+  if(titles.length){
+    try{
+      const url = "https://fr.wikipedia.org/w/api.php?action=query&redirects=1&prop=coordinates|pageimages|extracts&piprop=thumbnail&pithumbsize=900&colimit=max&exintro=1&explaintext=1&exlimit=max&format=json&origin=*&titles="+encodeURIComponent(titles.join("|"));
+      const j = await getJSON(url);
+      const q = j.query||{};
+      const alias = {};
+      (q.normalized||[]).forEach(x=>alias[x.from]=x.to);
+      (q.redirects||[]).forEach(x=>alias[x.from]=x.to);
+      const pages = {};
+      Object.values(q.pages||{}).forEach(p=>pages[p.title]=p);
+      resolve = t=>{ let c=t,n=0; while(alias[c] && n++<6) c=alias[c]; return pages[c]||null; };
+    }catch(e){}
+  }
+  d.sites.forEach(s=>{
+    (s.wp||[]).forEach(t=>{
+      const p = resolve(t); if(!p) return;
+      if(!s.gpsDone && p.coordinates && p.coordinates.length){
+        const c = p.coordinates[0];
+        if(distDeg(c.lat,c.lon,s.lat,s.lon)<1.0 && c.lat>12 && c.lat<17 && c.lon<-11 && c.lon>-18){
+          s.lat=c.lat; s.lon=c.lon; s.gpsDone=true;
+        }
+      }
+      if(!s.img && p.thumbnail) s.img = p.thumbnail.source;
+      if(!s.moreTitle && p.missing===undefined && p.title){
+        const ex = (p.extract||"").replace(/\s+/g," ").trim();
+        if(!/peut désigner|peut faire référence|page d'homonymie/i.test(ex)){
+          s.moreTitle = p.title;
+          if(ex.length>120) s.more = ex.length>1300 ? ex.slice(0,1300) : ex;
+        }
+      }
+    });
+  });
+  if(currentRegion===name){ renderRegionMap(); renderCards(); }
+  for(const s of d.sites){
+    if(!s.img){
+      const src = await searchPhoto(s.q);
+      if(src){ s.img = src; if(currentRegion===name) renderCards(); }
+    }
+  }
+}
+
+
+/* =====================================================
+   HISTOIRE COMPLÈTE (article Wikipédia en entier)
+===================================================== */
+async function loadFull(s,box){
+  if(s.full){ renderFull(box,s); return; }
+  box.textContent = "Chargement de l'histoire complète…";
+  try{
+    const url = "https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(s.moreTitle);
+    const j = await getJSON(url);
+    const pg = Object.values((j.query||{}).pages||{})[0];
+    s.full = (pg && pg.extract) ? pg.extract : (s.more||"");
+  }catch(e){ s.full = s.more||""; }
+  renderFull(box,s);
+}
+
+function renderFull(box,s){
+  box.innerHTML = "";
+  const txt = s.full||"";
+  if(!txt){ box.textContent = "Texte indisponible pour le moment."; return; }
+  const out = []; let total = 0;
+  for(const raw of txt.split("\n")){
+    const line = raw.trim(); if(!line) continue;
+    const m = line.match(/^=+\s*(.*?)\s*=+$/);
+    if(m){
+      if(/^(notes|références|voir aussi|liens externes|bibliographie|annexes|articles connexes|sources)\b/i.test(m[1])) break;
+      out.push({h:m[1]}); continue;
+    }
+    out.push({p:line}); total += line.length;
+    if(total>5500) break;
+  }
+  while(out.length && out[out.length-1].h) out.pop();
+  out.forEach(o=>{
+    if(o.h){ const h = document.createElement("h5"); h.textContent = o.h; box.appendChild(h); }
+    else{ const p = document.createElement("p"); p.textContent = o.p; box.appendChild(p); }
+  });
+  const src = document.createElement("div"); src.className = "src";
+  const a = document.createElement("a");
+  a.href = "https://fr.wikipedia.org/wiki/"+encodeURIComponent(s.moreTitle.replace(/ /g,"_"));
+  a.target = "_blank"; a.rel = "noopener"; a.textContent = "Lire l'article complet sur Wikipédia";
+  src.appendChild(document.createTextNode("Source : Wikipédia — ")); src.appendChild(a);
+  box.appendChild(src);
+}
+
+/* =====================================================
+   DÉMARRAGE
+===================================================== */
+const grid = document.getElementById("grid");
+ORDER.forEach(n=>{
+  const e = document.createElement("div");
+  e.className = "destination";
+  e.innerHTML = "<small>"+DATA[n].tag+"</small><h3>"+n+"</h3>";
+  e.addEventListener("click",()=>openRegion(n));
+  grid.appendChild(e);
+});
+document.getElementById("backBtn").addEventListener("click",closeRegion);
+
+GEO = {features:fallbackFeatures(),real:false};
+renderNational();
+loadGeo().then(g=>{
+  GEO = g;
+  renderNational();
+  document.getElementById("status").textContent = g.real
+    ? "Carte réelle des 14 régions chargée ✓"
+    : "Carte simplifiée (limites réelles indisponibles — vérifie ta connexion internet).";
+});
 </script>
 </body>
 </html>

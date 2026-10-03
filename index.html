@@ -94,6 +94,9 @@ details p{margin-top:10px}
 .qnext{margin-top:14px;display:inline-block}
 .score{font-size:64px;font-weight:900;color:#9b762d;margin:6px 0}
 
+.off-btn{margin-top:12px;width:100%;padding:16px 18px;border-radius:18px;border:2px dashed #9b762d;background:transparent;color:#10251e;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit;text-align:left}
+.off-st{margin-top:8px;font-size:12.5px;color:#5b6761;line-height:1.5;min-height:18px}
+
 /* liste des régions */
 .destinations{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .destination{min-height:100px;padding:18px;border-radius:20px;background:#10251e;color:#fff;cursor:pointer;transition:.25s}
@@ -133,6 +136,8 @@ footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font
     <div><h3>🎯 Le grand quiz du Sénégal</h3><p>10 questions sur les régions, les sites et leur histoire. Prêt à tester tes connaissances ?</p></div>
     <div class="go">▶</div>
   </div>
+  <button class="off-btn" id="offBtn">📥 Préparer la version hors connexion (à faire une fois avec internet)</button>
+  <div class="off-st" id="offSt"></div>
   <div class="destinations" id="grid"></div>
 </div>
 
@@ -657,10 +662,13 @@ async function searchPhoto(q){
 
 function distDeg(a,b,c,d){ return Math.max(Math.abs(a-c),Math.abs(b-d)); }
 
-async function enrichFromWikipedia(name){
+function enrichFromWikipedia(name){
   const d = DATA[name];
-  if(d.enriched){ return; }
-  d.enriched = true;
+  if(!d.enrichP) d.enrichP = enrichCore(name);
+  return d.enrichP;
+}
+async function enrichCore(name){
+  const d = DATA[name];
   const titles = [];
   d.sites.forEach(s=>(s.wp||[]).forEach(t=>{ if(titles.indexOf(t)===-1) titles.push(t); }));
   let resolve = ()=>null;
@@ -853,6 +861,71 @@ function renderResult(){
 }
 document.getElementById("quizBtn").addEventListener("click",startQuiz);
 document.getElementById("quizBack").addEventListener("click",closeQuiz);
+
+
+/* =====================================================
+   MODE HORS CONNEXION
+   - sw.js garde en mémoire la page, les photos et les textes
+   - le bouton "Préparer" télécharge tout d'un coup
+===================================================== */
+if("serviceWorker" in navigator && location.protocol.indexOf("http")===0){
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+
+function preloadImg(url){
+  return new Promise(res=>{
+    const i = new Image();
+    i.onload = i.onerror = ()=>res();
+    i.src = url;
+    setTimeout(res,15000);
+  });
+}
+async function getFull(s){
+  if(s.full||!s.moreTitle) return;
+  try{
+    const url = "https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(s.moreTitle);
+    const j = await getJSON(url);
+    const pg = Object.values((j.query||{}).pages||{})[0];
+    s.full = (pg && pg.extract) ? pg.extract : (s.more||"");
+  }catch(e){}
+}
+
+async function prepareOffline(){
+  const btn = document.getElementById("offBtn"), st = document.getElementById("offSt");
+  if(!("serviceWorker" in navigator) || location.protocol.indexOf("http")!==0){
+    st.textContent = "Ouvre le site depuis son lien en ligne (https) pour activer le mode hors connexion.";
+    return;
+  }
+  btn.disabled = true;
+  st.textContent = "Activation du mode hors connexion…";
+  try{ await navigator.serviceWorker.ready; }catch(e){}
+  await new Promise(r=>setTimeout(r,600));
+  if(!navigator.serviceWorker.controller){
+    btn.disabled = false;
+    st.textContent = "Recharge la page une fois, puis touche à nouveau le bouton.";
+    return;
+  }
+  let total = 0; ORDER.forEach(n=>{ total += DATA[n].sites.length; });
+  let done = 0, fail = 0;
+  for(const name of ORDER){
+    st.textContent = "Téléchargement… "+done+" / "+total+" sites ("+name+")";
+    try{ await enrichFromWikipedia(name); }catch(e){}
+    for(const s of DATA[name].sites){
+      try{
+        if(!s.img){ const src = await searchPhoto(s.q); if(src) s.img = src; }
+        await getFull(s);
+        if(s.img) await preloadImg(s.img); else fail++;
+      }catch(e){ fail++; }
+      done++;
+      st.textContent = "Téléchargement… "+done+" / "+total+" sites ("+name+")";
+    }
+  }
+  btn.disabled = false;
+  st.textContent = fail===0
+    ? "✅ Prêt ! Le site marche maintenant sans internet sur cet appareil."
+    : "✅ Prêt (sauf "+fail+" photo(s) introuvable(s)). Le site marche sans internet sur cet appareil.";
+}
+document.getElementById("offBtn").addEventListener("click",prepareOffline);
 
 /* =====================================================
    DÉMARRAGE

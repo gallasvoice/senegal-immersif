@@ -74,6 +74,26 @@ details p{margin-top:10px}
 .full h5{margin:16px 0 2px;font-size:15px;color:#10251e}
 .full p{margin-top:8px;line-height:1.7;font-size:14.5px;color:#4a5751}
 
+
+/* QUIZ */
+.quiz-cta{margin-top:22px;padding:22px;border-radius:22px;background:linear-gradient(135deg,#d7a83d,#e8c76e);color:#071b16;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.quiz-cta h3{font-size:22px;margin-bottom:4px}
+.quiz-cta p{font-size:13px;line-height:1.4}
+.quiz-cta .go{font-size:30px}
+.qbar{height:8px;border-radius:8px;background:#dcd6c6;overflow:hidden;margin-bottom:8px}
+.qbar div{height:100%;background:#d7a83d;width:0;transition:width .3s}
+.qcount{font-size:12px;color:#9b762d;letter-spacing:2px;font-weight:bold;margin-bottom:10px}
+.qcard{background:#fff;border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.qcard h3{font-size:22px;line-height:1.35;margin-bottom:18px}
+.ans{display:block;width:100%;text-align:left;font-size:17px;padding:16px 18px;min-height:58px;margin-bottom:10px;border-radius:16px;border:2px solid #d9ded9;background:#f8f9f6;color:#10251e;cursor:pointer;font-family:inherit}
+.ans:hover{border-color:#d7a83d}
+.ans.good{background:#d3ecd9;border-color:#2e8b4f}
+.ans.bad{background:#f6d6d2;border-color:#c0392b}
+.ans:disabled{cursor:default}
+.qfb{margin-top:6px;padding:14px 16px;border-radius:14px;background:#f5f1e7;color:#4a5751;line-height:1.55;font-size:14.5px}
+.qnext{margin-top:14px;display:inline-block}
+.score{font-size:64px;font-weight:900;color:#9b762d;margin:6px 0}
+
 /* liste des régions */
 .destinations{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .destination{min-height:100px;padding:18px;border-radius:20px;background:#10251e;color:#fff;cursor:pointer;transition:.25s}
@@ -109,7 +129,17 @@ footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font
   <p class="hint">Touchez une région pour ouvrir sa carte et ses sites touristiques.</p>
   <p class="status" id="status">Chargement de la carte…</p>
   <div class="map-card"><svg id="natSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div class="quiz-cta" id="quizBtn">
+    <div><h3>🎯 Le grand quiz du Sénégal</h3><p>10 questions sur les régions, les sites et leur histoire. Prêt à tester tes connaissances ?</p></div>
+    <div class="go">▶</div>
+  </div>
   <div class="destinations" id="grid"></div>
+</div>
+
+<!-- VUE QUIZ -->
+<div id="viewQuiz" style="display:none">
+  <button class="back" id="quizBack">← Carte du Sénégal</button>
+  <div id="quizBody"></div>
 </div>
 
 <!-- VUE 2 : CARTE D'UNE RÉGION -->
@@ -718,6 +748,111 @@ function renderFull(box,s){
   src.appendChild(document.createTextNode("Source : Wikipédia — ")); src.appendChild(a);
   box.appendChild(src);
 }
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+const QUIZ = [
+{q:"Quelle est la capitale du Sénégal ?",a:"Dakar",w:["Saint-Louis","Thiès","Kaolack"],e:"Dakar occupe la presqu'île du Cap-Vert, le point le plus occidental de l'Afrique continentale."},
+{q:"Combien de régions compte le Sénégal ?",a:"14",w:["12","16","11"],e:"Le Sénégal est découpé en 14 régions, de Dakar à Kédougou, de Saint-Louis à Ziguinchor."},
+{q:"Dans quelle région se trouve le Monument de la Renaissance africaine ?",a:"Dakar",w:["Thiès","Saint-Louis","Louga"],e:"Inaugurée en 2010 sur la colline des Mamelles, la statue de bronze mesure environ 49 mètres."},
+{q:"Quelle île est célèbre pour la Maison des Esclaves ?",a:"Gorée",w:["Carabane","Fadiouth","Mar Lodj"],e:"Classée à l'UNESCO, Gorée est un haut lieu de mémoire de la traite atlantique."},
+{q:"Pourquoi le Lac Rose est-il rose ?",a:"Des micro-organismes vivent dans son eau très salée",w:["Il reflète le sable rose des dunes","On y verse des colorants","Il est alimenté par une rivière rouge"],e:"Les sauniers y récoltent le sel à la main. Le lac fut aussi l'arrivée du rallye Paris-Dakar."},
+{q:"Quel lieu est le point le plus à l'ouest de l'Afrique continentale ?",a:"La pointe des Almadies",w:["Le Cap Skirring","La Langue de Barbarie","Le Cap Manuel"],e:"Située à l'extrémité nord-ouest de la presqu'île de Dakar, la pointe des Almadies est battue par l'Atlantique."},
+{q:"Quelle ville fut la première capitale de l'Afrique-Occidentale française et du Sénégal ?",a:"Saint-Louis",w:["Dakar","Ziguinchor","Kaolack"],e:"Fondée au XVIIe siècle, l'île de Saint-Louis est classée à l'UNESCO pour son architecture coloniale."},
+{q:"Quel parc de la région de Saint-Louis accueille chaque hiver des pélicans et des centaines de milliers d'oiseaux migrateurs ?",a:"Le parc du Djoudj",w:["Le parc de Bandia","Le parc des îles de la Madeleine","Le parc de Niokolo-Koba"],e:"Le parc national des oiseaux du Djoudj est un sanctuaire classé à l'UNESCO, dans le delta du fleuve Sénégal."},
+{q:"Quelle ville du nord est dominée par un fort au bord du fleuve Sénégal ?",a:"Podor",w:["Matam","Kolda","Fatick"],e:"Le fort de Podor date du XVIIIe siècle et fut reconstruit au XIXe par les Français."},
+{q:"Quel petit désert de dunes se trouve entre Dakar et Saint-Louis ?",a:"Lompoul",w:["Bandia","Kahone","Dindéfelo"],e:"À Lompoul, on se promène à dos de dromadaire et on dort sous tente au milieu des dunes ocre."},
+{q:"Quelle île, bâtie sur des coquillages, est reliée à Joal par une passerelle en bois ?",a:"Fadiouth",w:["Gorée","Carabane","Mar Lodj"],e:"Sur l'île de Fadiouth, chrétiens et musulmans reposent côte à côte dans le même cimetière."},
+{q:"Quelle ville de la Petite-Côte est la ville natale de Léopold Sédar Senghor ?",a:"Joal",w:["Mbour","Rufisque","Popenguine"],e:"Léopold Sédar Senghor fut le premier président du Sénégal."},
+{q:"Où peut-on faire un safari en réserve, à environ une heure de Dakar ?",a:"Dans la réserve de Bandia",w:["Dans la réserve de Palmarin","Dans la réserve du Ferlo","Dans la réserve de Guembeul"],e:"On y observe des girafes, des rhinocéros, des zèbres, des buffles et d'anciens baobabs."},
+{q:"Quel savoir-faire d'art est célèbre à Thiès ?",a:"La tapisserie d'art",w:["La poterie de verre","La sculpture sur pierre","La broderie d'or"],e:"Les Manufactures sénégalaises des arts décoratifs, créées dans les années 1960, tissent à la main des tapisseries d'artistes."},
+{q:"Qui a fondé la ville sainte de Touba en 1887 ?",a:"Cheikh Ahmadou Bamba",w:["Cheikh Ibrahima Niass","Maba Diakhou Bâ","El Hadj Omar Tall"],e:"Cheikh Ahmadou Bamba est le fondateur du mouridisme. Le Magal rassemble chaque année des millions de fidèles à Touba."},
+{q:"Dans quelle région se trouve la Grande Mosquée de Touba ?",a:"Diourbel",w:["Louga","Kaolack","Thiès"],e:"Son minaret dépasse 80 mètres et la mosquée abrite le mausolée du fondateur."},
+{q:"Dans quelle ville Cheikh Ahmadou Bamba fut-il assigné à résidence de 1912 à 1927 ?",a:"Diourbel",w:["Saint-Louis","Kaolack","Thiès"],e:"Cette période en fait un lieu important de l'histoire religieuse du Sénégal."},
+{q:"Quel delta classé à l'UNESCO réunit bras de mer, îlots et mangroves ?",a:"Le delta du Saloum",w:["Le delta du fleuve Gambie","Le delta de la Casamance","Le delta du Djoudj"],e:"Il abrite une riche faune d'oiseaux et des amas coquilliers très anciens."},
+{q:"Les cercles de pierres de Sine Ngayène et de Wanar, dans la région de Kaffrine, sont classés par quelle organisation ?",a:"L'UNESCO",w:["L'OMS","La FIFA","L'Union africaine"],e:"Ces mégalithes ont été érigés il y a plus d'un millénaire."},
+{q:"Quel parc de l'est du Sénégal, classé à l'UNESCO, abrite lions, éléphants et chimpanzés ?",a:"Le parc du Niokolo-Koba",w:["Le parc du Djoudj","Le parc de la Langue de Barbarie","Le parc des îles de la Madeleine"],e:"C'est l'une des plus grandes aires protégées d'Afrique de l'Ouest, au bord de la Gambie."},
+{q:"Quel paysage culturel de la région de Kédougou est classé à l'UNESCO ?",a:"Le Pays Bassari",w:["Le Pays Sérère","Le Pays Diola","Le Pays Peul de Matam"],e:"On y rencontre les Bassari, les Peul et les Bédik, leurs villages perchés et leurs masques."},
+{q:"Dans quelle région se trouvent les chutes de Dindéfelo ?",a:"Kédougou",w:["Tambacounda","Kolda","Matam"],e:"La randonnée qui y mène traverse falaises et forêt-galerie jusqu'à une vasque naturelle."},
+{q:"Dans quelle région se trouve la station balnéaire de Cap Skirring ?",a:"Ziguinchor",w:["Sédhiou","Kolda","Fatick"],e:"Elle est célèbre pour ses longues plages de sable blond bordées de cocotiers."},
+{q:"Quelle île, à l'embouchure du fleuve Casamance, fut l'un des premiers comptoirs français de la région ?",a:"Carabane",w:["Gorée","Fadiouth","Dionewar"],e:"On y voit encore une ancienne église et des bâtiments coloniaux au milieu de la mangrove."},
+{q:"De quel village est originaire Aline Sitoé Diatta, figure de la résistance diola ?",a:"Kabrousse",w:["Oussouye","Carabane","Mlomp"],e:"Elle s'est opposée à l'administration coloniale dans les années 1940. Elle est aujourd'hui un symbole de courage en Casamance."},
+{q:"Quelle ville frontière avec le Mali est traversée par la ligne de chemin de fer Dakar-Niger ?",a:"Kidira",w:["Bakel","Podor","Vélingara"],e:"Située au bord de la Falémé, Kidira est un carrefour de commerce vers l'intérieur de l'Afrique de l'Ouest."},
+{q:"Quel fleuve structure toute la vie de la région de Matam ?",a:"Le fleuve Sénégal",w:["Le fleuve Gambie","Le fleuve Casamance","Le Saloum"],e:"Cultures de décrue, pêche et villages du Fouta Toro vivent au rythme du fleuve."},
+{q:"Quel chef religieux du XIXe siècle a établi le royaume du Rip à Nioro ?",a:"Maba Diakhou Bâ",w:["Cheikh Ahmadou Bamba","Lat Dior","Aline Sitoé Diatta"],e:"Nioro du Rip garde la mémoire de cette période de l'histoire sénégalaise."}
+];
+
+let qz = {list:[],i:0,score:0};
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+function showOnly(id){
+  ["viewMap","viewRegion","viewQuiz"].forEach(v=>{ document.getElementById(v).style.display = (v===id?"block":"none"); });
+  window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
+}
+function startQuiz(){
+  qz.list = shuffle(QUIZ.slice()).slice(0,10);
+  qz.i = 0; qz.score = 0;
+  showOnly("viewQuiz");
+  renderQuestion();
+}
+function closeQuiz(){ showOnly("viewMap"); }
+
+function renderQuestion(){
+  const body = document.getElementById("quizBody");
+  body.innerHTML = "";
+  const n = qz.list.length, it = qz.list[qz.i];
+
+  const count = document.createElement("div"); count.className = "qcount";
+  count.textContent = "QUESTION "+(qz.i+1)+" / "+n+"   •   SCORE : "+qz.score;
+  const bar = document.createElement("div"); bar.className = "qbar";
+  const fill = document.createElement("div"); fill.style.width = (qz.i/n*100)+"%"; bar.appendChild(fill);
+  body.appendChild(count); body.appendChild(bar);
+
+  const card = document.createElement("div"); card.className = "qcard";
+  const h = document.createElement("h3"); h.textContent = it.q; card.appendChild(h);
+
+  const opts = shuffle([it.a].concat(it.w));
+  const fb = document.createElement("div");
+  const btns = [];
+  opts.forEach(o=>{
+    const b = document.createElement("button"); b.className = "ans"; b.textContent = o;
+    b.addEventListener("click",()=>{
+      btns.forEach(x=>{ x.disabled = true; if(x.textContent===it.a) x.classList.add("good"); });
+      if(o===it.a){ qz.score++; fb.textContent = "✅ Bonne réponse ! " + it.e; }
+      else{ b.classList.add("bad"); fb.textContent = "❌ La bonne réponse était : " + it.a + ". " + it.e; }
+      fb.className = "qfb";
+      count.textContent = "QUESTION "+(qz.i+1)+" / "+n+"   •   SCORE : "+qz.score;
+      const nx = document.createElement("button"); nx.className = "btn qnext";
+      nx.textContent = (qz.i+1<n) ? "Question suivante →" : "Voir mon résultat →";
+      nx.addEventListener("click",()=>{ qz.i++; if(qz.i<n) renderQuestion(); else renderResult(); });
+      card.appendChild(fb); card.appendChild(nx);
+      nx.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+    btns.push(b); card.appendChild(b);
+  });
+  body.appendChild(card);
+}
+
+function renderResult(){
+  const body = document.getElementById("quizBody");
+  body.innerHTML = "";
+  const n = qz.list.length, sc = qz.score;
+  const msg = sc>=9 ? "Expert du Sénégal ! Tu connais ton pays sur le bout des doigts." : sc>=6 ? "Bravo, tu es un excellent explorateur du Sénégal !" : sc>=3 ? "Pas mal ! Explore la carte pour en savoir plus et retente ta chance." : "Le voyage ne fait que commencer : explore la carte et reviens jouer !";
+  const card = document.createElement("div"); card.className = "qcard"; card.style.textAlign = "center";
+  const lab = document.createElement("div"); lab.className = "qcount"; lab.textContent = "TON RÉSULTAT";
+  const big = document.createElement("div"); big.className = "score"; big.textContent = sc+" / "+n;
+  const p = document.createElement("p"); p.style.cssText = "color:#4a5751;line-height:1.6;margin-bottom:16px"; p.textContent = msg;
+  const again = document.createElement("button"); again.className = "btn"; again.textContent = "Rejouer";
+  again.addEventListener("click",startQuiz);
+  const map = document.createElement("button"); map.className = "btn"; map.style.cssText = "margin-left:8px;background:#10251e;color:#fff";
+  map.textContent = "Retour à la carte"; map.addEventListener("click",closeQuiz);
+  card.appendChild(lab); card.appendChild(big); card.appendChild(p); card.appendChild(again); card.appendChild(map);
+  body.appendChild(card);
+}
+document.getElementById("quizBtn").addEventListener("click",startQuiz);
+document.getElementById("quizBack").addEventListener("click",closeQuiz);
 
 /* =====================================================
    DÉMARRAGE

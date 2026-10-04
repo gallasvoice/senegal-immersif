@@ -24,10 +24,10 @@ h1{font-size:clamp(34px,9vw,64px);line-height:.95;margin:10px 0}
 /* SECTIONS */
 .map-section{background:#f5f1e7;color:#10251e;padding:30px 16px 45px;min-height:100vh}
 .wrap{max-width:720px;margin:0 auto}
-.section-label{color:#9b762d;letter-spacing:3px;font-size:10px;font-weight:bold}
+.section-label{color:#7a5a14;letter-spacing:3px;font-size:10px;font-weight:bold}
 .section-title{font-size:32px;margin:8px 0 8px}
 .hint{color:#5b6761;font-size:13px;margin-bottom:6px}
-.status{color:#9b762d;font-size:11px;margin-bottom:14px}
+.status{color:#7a5a14;font-size:11px;margin-bottom:14px}
 .map-card{background:#e4ece8;border-radius:28px;padding:8px;overflow:hidden}
 .map-card svg{width:100%;height:auto;display:block;touch-action:manipulation}
 .sea{fill:#e4ece8}
@@ -48,7 +48,7 @@ h1{font-size:clamp(34px,9vw,64px);line-height:.95;margin:10px 0}
 
 .back{background:#10251e;color:#fff;border:0;border-radius:30px;padding:12px 18px;font-size:14px;cursor:pointer;margin-bottom:18px}
 .map-info{background:#fff;padding:23px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.08);margin-bottom:16px}
-.map-info small{color:#9b762d;letter-spacing:2px;font-size:10px;font-weight:bold}
+.map-info small{color:#7a5a14;letter-spacing:2px;font-size:10px;font-weight:bold}
 .map-info h3{font-size:28px;margin:6px 0 8px}
 .map-info p{color:#5b6761;line-height:1.6}
 
@@ -60,17 +60,17 @@ h1{font-size:clamp(34px,9vw,64px);line-height:.95;margin:10px 0}
 .num{position:absolute;top:12px;left:12px;z-index:2;width:30px;height:30px;border-radius:50%;background:#d7a83d;color:#071b16;font-weight:bold;display:flex;align-items:center;justify-content:center;border:2px solid #071b16}
 .site .body{padding:18px 20px 22px}
 .site h4{font-size:20px;margin-bottom:6px}
-.gps{font-size:11px;color:#9b762d;margin-bottom:8px}
+.gps{font-size:11px;color:#7a5a14;margin-bottom:8px}
 .site p{color:#4a5751;line-height:1.65;font-size:14.5px}
 
 details{margin-top:14px;border-top:1px solid #e3e7e2;padding-top:12px}
-summary{cursor:pointer;color:#9b762d;font-weight:bold;font-size:14px;list-style:none}
+summary{cursor:pointer;color:#7a5a14;font-weight:bold;font-size:14px;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:" ▾"}
 details[open] summary::after{content:" ▴"}
 details p{margin-top:10px}
-.src{margin-top:12px;font-size:11px;color:#87958f}
-.src a{color:#9b762d}
+.src{margin-top:12px;font-size:11px;color:#5b6761}
+.src a{color:#7a5a14}
 .full h5{margin:16px 0 2px;font-size:15px;color:#10251e}
 .full p{margin-top:8px;line-height:1.7;font-size:14.5px;color:#4a5751}
 
@@ -82,7 +82,7 @@ details p{margin-top:10px}
 .quiz-cta .go{font-size:30px}
 .qbar{height:8px;border-radius:8px;background:#dcd6c6;overflow:hidden;margin-bottom:8px}
 .qbar div{height:100%;background:#d7a83d;width:0;transition:width .3s}
-.qcount{font-size:12px;color:#9b762d;letter-spacing:2px;font-weight:bold;margin-bottom:10px}
+.qcount{font-size:12px;color:#7a5a14;letter-spacing:2px;font-weight:bold;margin-bottom:10px}
 .qcard{background:#fff;border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .qcard h3{font-size:22px;line-height:1.35;margin-bottom:18px}
 .ans{display:block;width:100%;text-align:left;font-size:17px;padding:16px 18px;min-height:58px;margin-bottom:10px;border-radius:16px;border:2px solid #d9ded9;background:#f8f9f6;color:#10251e;cursor:pointer;font-family:inherit}
@@ -92,10 +92,30 @@ details p{margin-top:10px}
 .ans:disabled{cursor:default}
 .qfb{margin-top:6px;padding:14px 16px;border-radius:14px;background:#f5f1e7;color:#4a5751;line-height:1.55;font-size:14.5px}
 .qnext{margin-top:14px;display:inline-block}
-.score{font-size:64px;font-weight:900;color:#9b762d;margin:6px 0}
+.score{font-size:64px;font-weight:900;color:#7a5a14;margin:6px 0}
 
-.off-btn{margin-top:12px;width:100%;padding:16px 18px;border-radius:18px;border:2px dashed #9b762d;background:transparent;color:#10251e;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit;text-align:left}
+.off-btn{margin-top:12px;width:100%;padding:16px 18px;border-radius:18px;border:2px dashed #7a5a14;background:transparent;color:#10251e;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit;text-align:left}
 .off-st{margin-top:8px;font-size:12.5px;color:#5b6761;line-height:1.5;min-height:18px}
+
+/* ACCESSIBILITÉ + LANGUES */
+.skip{position:absolute;left:-999px;top:8px;background:#d7a83d;color:#071b16;padding:10px 16px;border-radius:10px;font-weight:bold;z-index:100;text-decoration:none}
+.skip:focus{left:8px}
+a:focus-visible,button:focus-visible,summary:focus-visible,[role=button]:focus-visible{outline:3px solid #d7a83d;outline-offset:3px}
+.map-section a:focus-visible,.map-section button:focus-visible,.map-section [role=button]:focus-visible,.map-section summary:focus-visible{outline-color:#7a5a14}
+.reg:focus,.nb:focus,.dot:focus{outline:none}
+.reg:focus-visible{fill:#e8c76e;stroke:#071b16;stroke-width:3}
+.nb:focus-visible{fill:#e8c76e;stroke:#071b16;stroke-width:2.5}
+.dot:focus-visible circle{fill:#071b16;stroke:#d7a83d;stroke-width:4}
+.dot:focus-visible text{fill:#d7a83d}
+[tabindex="-1"]:focus{outline:none}
+button.destination{border:0;text-align:left;font-family:inherit;width:100%;display:block}
+.destination small{display:block}
+.destination .dn{display:block;margin-top:8px;font-size:19px;font-weight:bold}
+.hright{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.lang{display:flex;gap:6px}
+.lang button{font-family:inherit;font-size:12px;font-weight:bold;padding:8px 12px;border-radius:30px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;cursor:pointer;min-width:42px}
+.lang button[aria-pressed="true"]{background:#d7a83d;color:#071b16;border-color:#d7a83d}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 
 /* liste des régions */
 .destinations{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -105,20 +125,21 @@ details p{margin-top:10px}
 .destination h3{margin-top:8px;font-size:19px}
 
 footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font-size:11px}
-.credit{margin-top:8px;opacity:.7}
+.credit{margin-top:8px}
 </style>
 </head>
 <body>
+<a class="skip" href="#carte" data-i18n="skip">Aller à la carte</a>
 
 <section class="hero">
 <header>
 <div class="logo">SÉNÉGAL<br>IMMERSIF</div>
-<div class="badge">EXPLORE • SENEGAL</div>
+<div class="hright"><div class="lang" id="langSw" role="group" aria-label="Langue / Language / Sprache"></div><div class="badge">EXPLORE • SENEGAL</div></div>
 </header>
 <div class="hero-content">
-<div class="kicker">Une nouvelle façon de découvrir le Sénégal</div>
-<h1>Entrez<br>au Sénégal.</h1>
-<p class="hero-text">Touchez une région pour découvrir ses sites touristiques, leur histoire et leur localisation.</p>
+<div class="kicker" data-i18n="kicker">Une nouvelle façon de découvrir le Sénégal</div>
+<h1 data-i18n="h1" data-html="1">Entrez<br>au Sénégal.</h1>
+<p class="hero-text" data-i18n="heroText">Touchez une région pour découvrir ses sites touristiques, leur histoire et leur localisation.</p>
 </div>
 </section>
 
@@ -127,29 +148,29 @@ footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font
 
 <!-- VUE 1 : CARTE DU SÉNÉGAL -->
 <div id="viewMap">
-  <div class="section-label">CARTE DU SÉNÉGAL</div>
-  <h2 class="section-title">Explorez les territoires</h2>
-  <p class="hint">Touchez une région pour ouvrir sa carte et ses sites touristiques.</p>
-  <p class="status" id="status">Chargement de la carte…</p>
+  <div class="section-label" data-i18n="mapLabel">CARTE DU SÉNÉGAL</div>
+  <h2 class="section-title" id="mapTitle" tabindex="-1" data-i18n="mapTitle">Explorez les territoires</h2>
+  <p class="hint" data-i18n="mapHint">Touchez une région pour ouvrir sa carte et ses sites touristiques.</p>
+  <p class="status" id="status" role="status" aria-live="polite">Chargement de la carte…</p>
   <div class="map-card"><svg id="natSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
-  <div class="quiz-cta" id="quizBtn">
-    <div><h3>🎯 Le grand quiz du Sénégal</h3><p>10 questions sur les régions, les sites et leur histoire. Prêt à tester tes connaissances ?</p></div>
-    <div class="go">▶</div>
+  <div class="quiz-cta" id="quizBtn" role="button" tabindex="0">
+    <div><h3 data-i18n="quizTitle">🎯 Le grand quiz du Sénégal</h3><p data-i18n="quizSub">10 questions sur les régions, les sites et leur histoire. Prêt à tester tes connaissances ?</p></div>
+    <div class="go" aria-hidden="true">▶</div>
   </div>
-  <button class="off-btn" id="offBtn">📥 Préparer la version hors connexion (à faire une fois avec internet)</button>
-  <div class="off-st" id="offSt"></div>
+  <button class="off-btn" id="offBtn" data-i18n="offBtn">📥 Préparer la version hors connexion (à faire une fois avec internet)</button>
+  <div class="off-st" id="offSt" role="status" aria-live="polite"></div>
   <div class="destinations" id="grid"></div>
 </div>
 
 <!-- VUE QUIZ -->
 <div id="viewQuiz" style="display:none">
-  <button class="back" id="quizBack">← Carte du Sénégal</button>
+  <button class="back" id="quizBack" data-i18n="back">← Carte du Sénégal</button>
   <div id="quizBody"></div>
 </div>
 
 <!-- VUE 2 : CARTE D'UNE RÉGION -->
 <div id="viewRegion" style="display:none">
-  <button class="back" id="backBtn">← Carte du Sénégal</button>
+  <button class="back" id="backBtn" data-i18n="back">← Carte du Sénégal</button>
   <div class="map-info">
     <small id="rTag"></small>
     <h3 id="rTitle"></h3>
@@ -164,9 +185,11 @@ footer{padding:30px 20px;text-align:center;background:#071b16;color:#87958f;font
 
 <footer>
 SÉNÉGAL IMMERSIF © 2026
-<div class="credit">Prototype numérique • Limites : geoBoundaries • Photos : Wikipédia / Wikimedia Commons</div>
+<div class="credit" data-i18n="credit">Prototype numérique • Limites : geoBoundaries • Photos : Wikipédia / Wikimedia Commons</div>
 </footer>
 
+<script src="lang-en.js"></script>
+<script src="lang-de.js"></script>
 <script>
 /* =====================================================
    DONNÉES : régions + sites touristiques
@@ -344,6 +367,136 @@ Object.keys(EXTRA).forEach(k=>{ DATA[k].sites = DATA[k].sites.concat(EXTRA[k]); 
 
 const ORDER = ["Dakar","Saint-Louis","Thiès","Diourbel","Fatick","Kaolack","Kaffrine","Tambacounda","Kédougou","Kolda","Sédhiou","Ziguinchor","Louga","Matam"];
 
+
+/* =====================================================
+   LANGUES (FR intégré ; EN et DE dans lang-en.js / lang-de.js)
+   + OUTILS D'ACCESSIBILITÉ
+===================================================== */
+window.LANGS = window.LANGS || {};
+LANGS.fr = {name:"Français", ui:{
+kicker:"Une nouvelle façon de découvrir le Sénégal",
+h1:"Entrez<br>au Sénégal.",
+heroText:"Touchez une région pour découvrir ses sites touristiques, leur histoire et leur localisation.",
+mapLabel:"CARTE DU SÉNÉGAL",
+mapTitle:"Explorez les territoires",
+mapHint:"Touchez une région pour ouvrir sa carte et ses sites touristiques.",
+statusLoading:"Chargement de la carte…",
+statusReal:"Carte réelle des 14 régions chargée ✓",
+statusFallback:"Carte simplifiée (limites réelles indisponibles — vérifie ta connexion internet).",
+quizTitle:"🎯 Le grand quiz du Sénégal",
+quizSub:"10 questions sur les régions, les sites et leur histoire. Prêt à tester tes connaissances ?",
+offBtn:"📥 Préparer la version hors connexion (à faire une fois avec internet)",
+back:"← Carte du Sénégal",
+credit:"Prototype numérique • Limites : geoBoundaries • Photos : Wikipédia / Wikimedia Commons",
+skip:"Aller à la carte",
+readMore:"Lire l'histoire complète",
+loadingFull:"Chargement de l'histoire complète…",
+noText:"Texte indisponible pour le moment.",
+noLang:"",
+sourceWp:"Source : Wikipédia — ",
+readFullWp:"Lire l'article complet sur Wikipédia",
+gpsLine:"GPS : {lat}° N, {lon}° O",
+qCount:"QUESTION {i} / {n}   •   SCORE : {s}",
+goodFb:"✅ Bonne réponse ! ",
+badFb:"❌ La bonne réponse était : {a}. ",
+next:"Question suivante →",
+seeResult:"Voir mon résultat →",
+yourResult:"TON RÉSULTAT",
+msg9:"Expert du Sénégal ! Tu connais ton pays sur le bout des doigts.",
+msg6:"Bravo, tu es un excellent explorateur du Sénégal !",
+msg3:"Pas mal ! Explore la carte pour en savoir plus et retente ta chance.",
+msg0:"Le voyage ne fait que commencer : explore la carte et reviens jouer !",
+replay:"Rejouer",
+backMap:"Retour à la carte",
+offEnabling:"Activation du mode hors connexion…",
+offNeedHttps:"Ouvre le site depuis son lien en ligne (https) pour activer le mode hors connexion.",
+offReload:"Recharge la page une fois, puis touche à nouveau le bouton.",
+offProgress:"Téléchargement… {d} / {t} sites ({n})",
+offDone:"✅ Prêt ! Le site marche maintenant sans internet sur cet appareil.",
+offDonePartial:"✅ Prêt (sauf {f} photo(s) introuvable(s)). Le site marche sans internet sur cet appareil.",
+regionAria:"Région de {n}",
+svgNat:"Carte des 14 régions du Sénégal. Choisis une région.",
+svgReg:"Carte de la région de {n} avec ses sites touristiques marqués par des points numérotés.",
+siteAria:"Site {i} : {n}",
+langLabel:"Langue",
+photoOf:"{n} — région de {r}"
+}};
+
+let LANG = "fr";
+let statusKey = "statusLoading";
+const SMOOTH = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth";
+
+function t(key,vars){
+  const u = (LANGS[LANG] && LANGS[LANG].ui) || {};
+  let x = (u[key]!==undefined) ? u[key] : LANGS.fr.ui[key];
+  if(vars){ for(const k in vars){ x = x.split("{"+k+"}").join(vars[k]); } }
+  return x;
+}
+function trRegion(name){ return LANG!=="fr" && LANGS[LANG] && LANGS[LANG].regions && LANGS[LANG].regions[name]; }
+function RT(name){ const r = trRegion(name), b = DATA[name]; return {tag:(r&&r.tag)||b.tag, intro:(r&&r.intro)||b.intro}; }
+function sName(name,i){ const r = trRegion(name); return (r && r.sites && r.sites[i] && r.sites[i].n) || DATA[name].sites[i].n; }
+function sText(name,i){ const r = trRegion(name); return (r && r.sites && r.sites[i] && r.sites[i].t) || DATA[name].sites[i].t; }
+function quizItem(idx){
+  if(LANG!=="fr" && LANGS[LANG] && LANGS[LANG].quiz && LANGS[LANG].quiz[idx]) return LANGS[LANG].quiz[idx];
+  return QUIZ[idx];
+}
+
+/* clavier : Entrée ou Espace = clic */
+function kbd(node,fn){
+  node.addEventListener("click",fn);
+  node.addEventListener("keydown",ev=>{ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); fn(ev); } });
+}
+function mkBtn(node,label){
+  node.setAttribute("tabindex","0");
+  node.setAttribute("role","button");
+  node.setAttribute("aria-label",label);
+}
+function focusEl(id){
+  const e = document.getElementById(id);
+  if(e){ e.setAttribute("tabindex","-1"); try{ e.focus({preventScroll:true}); }catch(x){ e.focus(); } }
+}
+function setStatus(){ document.getElementById("status").textContent = t(statusKey); }
+
+function buildLangSwitch(){
+  const box = document.getElementById("langSw"); box.innerHTML = "";
+  ["fr","en","de"].forEach(code=>{
+    if(!LANGS[code]) return;
+    const b = document.createElement("button"); b.type = "button";
+    b.textContent = code.toUpperCase();
+    b.setAttribute("lang",code);
+    b.setAttribute("aria-label",LANGS[code].name);
+    b.setAttribute("aria-pressed",code===LANG ? "true" : "false");
+    b.addEventListener("click",()=>{ LANG = code; applyLang(); });
+    box.appendChild(b);
+  });
+}
+
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-i18n]").forEach(e=>{
+    const v = t(e.getAttribute("data-i18n"));
+    if(e.getAttribute("data-html")) e.innerHTML = v; else e.textContent = v;
+  });
+  buildLangSwitch(); buildGrid(); setStatus();
+  if(GEO) renderNational();
+  if(currentRegion){
+    const r = RT(currentRegion);
+    document.getElementById("rTag").textContent = r.tag;
+    document.getElementById("rText").textContent = r.intro;
+    renderRegionMap(); renderCards();
+  }
+  if(document.getElementById("viewQuiz").style.display==="block"){
+    if(qz.done) renderResult(); else renderQuestion(false);
+  }
+  try{ localStorage.setItem("si-lang",LANG); }catch(e){}
+}
+function initLang(){
+  let saved = null; try{ saved = localStorage.getItem("si-lang"); }catch(e){}
+  const nav = (navigator.language||"fr").slice(0,2).toLowerCase();
+  LANG = (saved && LANGS[saved]) ? saved : (LANGS[nav] ? nav : "fr");
+  applyLang();
+}
+
 /* =====================================================
    FORMES DES RÉGIONS
    1) on essaie de charger les VRAIES limites (geoBoundaries)
@@ -493,13 +646,15 @@ let currentRegion = null;
 function renderNational(){
   const svg = document.getElementById("natSvg");
   svg.innerHTML = "";
+  svg.setAttribute("role","group"); svg.setAttribute("aria-label",t("svgNat"));
   const box = padBox(bboxOf(GEO.features),0.02);
   const proj = makeProj(box,600,6);
   svg.setAttribute("viewBox","0 0 "+proj.W+" "+proj.H);
   svg.appendChild(el("rect",{x:0,y:0,width:proj.W,height:proj.H,class:"sea"}));
   GEO.features.forEach(f=>{
     const p = el("path",{d:pathOf(f,proj),class:"reg","fill-rule":"evenodd"});
-    p.addEventListener("click",()=>openRegion(f.name));
+    mkBtn(p,t("regionAria",{n:f.name}));
+    kbd(p,()=>openRegion(f.name));
     svg.appendChild(p);
   });
   GEO.features.forEach(f=>{
@@ -524,13 +679,14 @@ function openRegion(name){
   currentRegion = name;
   document.getElementById("viewMap").style.display = "none";
   document.getElementById("viewRegion").style.display = "block";
-  document.getElementById("rTag").textContent = d.tag;
+  document.getElementById("rTag").textContent = RT(name).tag;
   document.getElementById("rTitle").textContent = name;
-  document.getElementById("rText").textContent = d.intro;
+  document.getElementById("rText").textContent = RT(name).intro;
   renderRegionMap();
   renderCards();
   window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
   enrichFromWikipedia(name);
+  focusEl("rTitle");
 }
 
 function closeRegion(){
@@ -538,6 +694,7 @@ function closeRegion(){
   document.getElementById("viewRegion").style.display = "none";
   document.getElementById("viewMap").style.display = "block";
   window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
+  focusEl("mapTitle");
 }
 
 function renderRegionMap(){
@@ -546,6 +703,7 @@ function renderRegionMap(){
   const feat = GEO.features.find(f=>f.name===currentRegion);
   const svg = document.getElementById("regSvg");
   svg.innerHTML = "";
+  svg.setAttribute("role","group"); svg.setAttribute("aria-label",t("svgReg",{n:currentRegion}));
   if(!feat){ return; }
 
   /* cadre : région + points des sites */
@@ -562,7 +720,8 @@ function renderRegionMap(){
   GEO.features.forEach(f=>{
     if(f.name===currentRegion) return;
     const p = el("path",{d:pathOf(f,proj),class:"nb","fill-rule":"evenodd"});
-    p.addEventListener("click",()=>openRegion(f.name));
+    mkBtn(p,t("regionAria",{n:f.name}));
+    kbd(p,()=>openRegion(f.name));
     svg.appendChild(p);
   });
   svg.appendChild(el("path",{d:pathOf(feat,proj),class:"focus","fill-rule":"evenodd"}));
@@ -572,7 +731,7 @@ function renderRegionMap(){
     if(f.name===currentRegion) return;
     const c = centroidOf(f,proj);
     if(c[0]>10 && c[0]<proj.W-10 && c[1]>10 && c[1]<proj.H-10){
-      svg.appendChild(el("text",{x:c[0],y:c[1],class:"lbl",style:"opacity:.55"},f.name));
+      svg.appendChild(el("text",{x:c[0],y:c[1],class:"lbl",style:"opacity:.85"},f.name));
     }
   });
 
@@ -582,8 +741,9 @@ function renderRegionMap(){
     const g = el("g",{class:"dot","data-i":i});
     g.appendChild(el("circle",{cx:p[0].toFixed(1),cy:p[1].toFixed(1),r:13}));
     g.appendChild(el("text",{x:p[0].toFixed(1),y:(p[1]+4.5).toFixed(1)},String(i+1)));
-    g.appendChild(el("text",{x:(p[0]+18).toFixed(1),y:(p[1]+5).toFixed(1),class:"nm",style:"display:none"},s.n));
-    g.addEventListener("click",()=>selectSite(i));
+    g.appendChild(el("text",{x:(p[0]+18).toFixed(1),y:(p[1]+5).toFixed(1),class:"nm",style:"display:none"},sName(currentRegion,i)));
+    mkBtn(g,t("siteAria",{i:i+1,n:sName(currentRegion,i)}));
+    kbd(g,()=>selectSite(i));
     svg.appendChild(g);
   });
 }
@@ -596,21 +756,23 @@ function renderCards(){
     const card = document.createElement("div");
     card.className = "site"; card.id = "site"+i;
     const ph = document.createElement("div");
-    ph.className = "ph"; ph.textContent = "📍 "+s.n;
+    ph.className = "ph"; ph.textContent = "📍 "+sName(currentRegion,i);
+    const altTxt = t("photoOf",{n:sName(currentRegion,i),r:currentRegion});
+    ph.setAttribute("role","img"); ph.setAttribute("aria-label",altTxt);
     const num = document.createElement("div");
-    num.className = "num"; num.textContent = i+1;
+    num.className = "num"; num.textContent = i+1; num.setAttribute("aria-hidden","true");
     ph.appendChild(num);
     const body = document.createElement("div");
     body.className = "body";
-    const h = document.createElement("h4"); h.textContent = s.n;
+    const h = document.createElement("h4"); h.textContent = sName(currentRegion,i);
     const gps = document.createElement("div"); gps.className = "gps";
-    gps.textContent = "GPS : "+s.lat.toFixed(4)+"° N, "+Math.abs(s.lon).toFixed(4)+"° O";
-    const p = document.createElement("p"); p.textContent = s.t;
+    gps.textContent = t("gpsLine",{lat:s.lat.toFixed(4),lon:Math.abs(s.lon).toFixed(4)});
+    const p = document.createElement("p"); p.textContent = sText(currentRegion,i);
     body.appendChild(h); body.appendChild(gps); body.appendChild(p);
     if(s.moreTitle){
       const det = document.createElement("details");
       det.addEventListener("click",ev=>ev.stopPropagation());
-      const sm = document.createElement("summary"); sm.textContent = "Lire l'histoire complète";
+      const sm = document.createElement("summary"); sm.textContent = t("readMore");
       const box = document.createElement("div"); box.className = "full";
       det.appendChild(sm); det.appendChild(box);
       det.addEventListener("toggle",()=>{ if(det.open) loadFull(s,box); });
@@ -619,13 +781,13 @@ function renderCards(){
     card.appendChild(ph); card.appendChild(body);
     card.addEventListener("click",()=>selectSite(i,true));
     wrap.appendChild(card);
-    if(s.img) putPhoto(ph,s.img);
+    if(s.img) putPhoto(ph,s.img,altTxt);
   });
 }
 
-function putPhoto(box,src){
+function putPhoto(box,src,alt){
   const img = new Image();
-  img.alt = "";
+  img.alt = alt||"";
   img.onload = ()=>box.insertBefore(img,box.firstChild);
   img.src = src;
 }
@@ -638,9 +800,9 @@ function selectSite(i,fromCard){
   });
   document.querySelectorAll(".site").forEach((c,k)=>c.classList.toggle("sel",k===i));
   if(!fromCard){
-    document.getElementById("site"+i).scrollIntoView({behavior:"smooth",block:"center"});
+    document.getElementById("site"+i).scrollIntoView({behavior:SMOOTH,block:"center"});
   }else{
-    document.getElementById("regSvg").scrollIntoView({behavior:"smooth",block:"center"});
+    document.getElementById("regSvg").scrollIntoView({behavior:SMOOTH,block:"center"});
   }
 }
 
@@ -717,46 +879,70 @@ async function enrichCore(name){
 /* =====================================================
    HISTOIRE COMPLÈTE (article Wikipédia en entier)
 ===================================================== */
-async function loadFull(s,box){
-  if(s.full){ renderFull(box,s); return; }
-  box.textContent = "Chargement de l'histoire complète…";
+async function fetchExtract(host,title){
+  const url = "https://"+host+"/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(title);
+  const j = await getJSON(url);
+  const pg = Object.values((j.query||{}).pages||{})[0];
+  return (pg && pg.extract) ? pg.extract : "";
+}
+async function ensureFull(s){
+  s.fulls = s.fulls || {};
+  if(s.fulls[LANG]) return s.fulls[LANG];
+  let res = {text:"",lang:"fr",title:s.moreTitle};
   try{
-    const url = "https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(s.moreTitle);
-    const j = await getJSON(url);
-    const pg = Object.values((j.query||{}).pages||{})[0];
-    s.full = (pg && pg.extract) ? pg.extract : (s.more||"");
-  }catch(e){ s.full = s.more||""; }
-  renderFull(box,s);
+    if(LANG!=="fr"){
+      const j = await getJSON("https://fr.wikipedia.org/w/api.php?action=query&prop=langlinks&lllang="+LANG+"&lllimit=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(s.moreTitle));
+      const pg = Object.values((j.query||{}).pages||{})[0];
+      const ll = pg && pg.langlinks && pg.langlinks[0];
+      const title = ll && (ll["*"] || ll.title);
+      if(title){ const tx = await fetchExtract(LANG+".wikipedia.org",title); if(tx) res = {text:tx,lang:LANG,title:title}; }
+    }
+    if(!res.text){
+      const tx = await fetchExtract("fr.wikipedia.org",s.moreTitle);
+      res = {text:(tx||s.more||""),lang:"fr",title:s.moreTitle};
+    }
+  }catch(e){ res = {text:(s.more||""),lang:"fr",title:s.moreTitle}; }
+  if(res.text) s.fulls[LANG] = res;
+  return res;
+}
+async function loadFull(s,box){
+  const cached = s.fulls && s.fulls[LANG];
+  if(cached){ renderFull(box,cached); return; }
+  box.textContent = t("loadingFull");
+  const res = await ensureFull(s);
+  renderFull(box,res);
 }
 
-function renderFull(box,s){
+function renderFull(box,res){
   box.innerHTML = "";
-  const txt = s.full||"";
-  if(!txt){ box.textContent = "Texte indisponible pour le moment."; return; }
+  const txt = (res && res.text) || "";
+  if(!txt){ box.textContent = t("noText"); return; }
   const out = []; let total = 0;
   for(const raw of txt.split("\n")){
     const line = raw.trim(); if(!line) continue;
     const m = line.match(/^=+\s*(.*?)\s*=+$/);
     if(m){
-      if(/^(notes|références|voir aussi|liens externes|bibliographie|annexes|articles connexes|sources)\b/i.test(m[1])) break;
+      if(/^(notes|références|voir aussi|liens externes|bibliographie|annexes|articles connexes|sources|references|see also|external links|further reading|bibliography|einzelnachweise|weblinks|literatur|siehe auch|anmerkungen|fußnoten)\b/i.test(m[1])) break;
       out.push({h:m[1]}); continue;
     }
     out.push({p:line}); total += line.length;
     if(total>5500) break;
   }
   while(out.length && out[out.length-1].h) out.pop();
+  if(LANG!=="fr" && res.lang==="fr" && t("noLang")){
+    const nl = document.createElement("p"); nl.textContent = t("noLang"); nl.style.fontStyle = "italic"; box.appendChild(nl);
+  }
   out.forEach(o=>{
     if(o.h){ const h = document.createElement("h5"); h.textContent = o.h; box.appendChild(h); }
     else{ const p = document.createElement("p"); p.textContent = o.p; box.appendChild(p); }
   });
   const src = document.createElement("div"); src.className = "src";
   const a = document.createElement("a");
-  a.href = "https://fr.wikipedia.org/wiki/"+encodeURIComponent(s.moreTitle.replace(/ /g,"_"));
-  a.target = "_blank"; a.rel = "noopener"; a.textContent = "Lire l'article complet sur Wikipédia";
-  src.appendChild(document.createTextNode("Source : Wikipédia — ")); src.appendChild(a);
+  a.href = "https://"+res.lang+".wikipedia.org/wiki/"+encodeURIComponent(res.title.replace(/ /g,"_"));
+  a.target = "_blank"; a.rel = "noopener"; a.textContent = t("readFullWp");
+  src.appendChild(document.createTextNode(t("sourceWp"))); src.appendChild(a);
   box.appendChild(src);
 }
-
 
 /* =====================================================
    QUIZ
@@ -792,74 +978,82 @@ const QUIZ = [
 {q:"Quel chef religieux du XIXe siècle a établi le royaume du Rip à Nioro ?",a:"Maba Diakhou Bâ",w:["Cheikh Ahmadou Bamba","Lat Dior","Aline Sitoé Diatta"],e:"Nioro du Rip garde la mémoire de cette période de l'histoire sénégalaise."}
 ];
 
-let qz = {list:[],i:0,score:0};
-function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+let qz = {list:[],i:0,score:0,done:false};
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const x=a[i]; a[i]=a[j]; a[j]=x; } return a; }
 
 function showOnly(id){
   ["viewMap","viewRegion","viewQuiz"].forEach(v=>{ document.getElementById(v).style.display = (v===id?"block":"none"); });
   window.scrollTo({top:document.getElementById("carte").offsetTop,behavior:"auto"});
 }
 function startQuiz(){
-  qz.list = shuffle(QUIZ.slice()).slice(0,10);
-  qz.i = 0; qz.score = 0;
+  qz.list = shuffle(QUIZ.map((_,i)=>i)).slice(0,10);
+  qz.i = 0; qz.score = 0; qz.done = false;
   showOnly("viewQuiz");
-  renderQuestion();
+  renderQuestion(true);
 }
-function closeQuiz(){ showOnly("viewMap"); }
+function closeQuiz(){ showOnly("viewMap"); focusEl("mapTitle"); }
 
-function renderQuestion(){
+function renderQuestion(focus){
   const body = document.getElementById("quizBody");
   body.innerHTML = "";
-  const n = qz.list.length, it = qz.list[qz.i];
+  const n = qz.list.length, it = quizItem(qz.list[qz.i]);
 
   const count = document.createElement("div"); count.className = "qcount";
-  count.textContent = "QUESTION "+(qz.i+1)+" / "+n+"   •   SCORE : "+qz.score;
+  count.textContent = t("qCount",{i:qz.i+1,n:n,s:qz.score});
   const bar = document.createElement("div"); bar.className = "qbar";
+  bar.setAttribute("role","progressbar"); bar.setAttribute("aria-valuemin","0"); bar.setAttribute("aria-valuemax",String(n)); bar.setAttribute("aria-valuenow",String(qz.i));
   const fill = document.createElement("div"); fill.style.width = (qz.i/n*100)+"%"; bar.appendChild(fill);
   body.appendChild(count); body.appendChild(bar);
 
   const card = document.createElement("div"); card.className = "qcard";
-  const h = document.createElement("h3"); h.textContent = it.q; card.appendChild(h);
+  const h = document.createElement("h3"); h.id = "qTitle"; h.textContent = it.q; h.setAttribute("tabindex","-1"); card.appendChild(h);
 
   const opts = shuffle([it.a].concat(it.w));
-  const fb = document.createElement("div");
+  const fb = document.createElement("div"); fb.setAttribute("role","status"); fb.setAttribute("aria-live","polite");
   const btns = [];
   opts.forEach(o=>{
-    const b = document.createElement("button"); b.className = "ans"; b.textContent = o;
+    const b = document.createElement("button"); b.type = "button"; b.className = "ans"; b.textContent = o;
     b.addEventListener("click",()=>{
       btns.forEach(x=>{ x.disabled = true; if(x.textContent===it.a) x.classList.add("good"); });
-      if(o===it.a){ qz.score++; fb.textContent = "✅ Bonne réponse ! " + it.e; }
-      else{ b.classList.add("bad"); fb.textContent = "❌ La bonne réponse était : " + it.a + ". " + it.e; }
+      if(o===it.a){ qz.score++; fb.textContent = t("goodFb") + it.e; }
+      else{ b.classList.add("bad"); fb.textContent = t("badFb",{a:it.a}) + it.e; }
       fb.className = "qfb";
-      count.textContent = "QUESTION "+(qz.i+1)+" / "+n+"   •   SCORE : "+qz.score;
-      const nx = document.createElement("button"); nx.className = "btn qnext";
-      nx.textContent = (qz.i+1<n) ? "Question suivante →" : "Voir mon résultat →";
-      nx.addEventListener("click",()=>{ qz.i++; if(qz.i<n) renderQuestion(); else renderResult(); });
-      card.appendChild(fb); card.appendChild(nx);
-      nx.scrollIntoView({behavior:"smooth",block:"nearest"});
+      count.textContent = t("qCount",{i:qz.i+1,n:n,s:qz.score});
+      const nx = document.createElement("button"); nx.type = "button"; nx.className = "btn qnext";
+      nx.textContent = (qz.i+1<n) ? t("next") : t("seeResult");
+      nx.addEventListener("click",()=>{ qz.i++; if(qz.i<n) renderQuestion(true); else renderResult(); });
+      card.appendChild(nx);
+      try{ nx.focus({preventScroll:true}); }catch(e){}
+      nx.scrollIntoView({behavior:SMOOTH,block:"nearest"});
     });
     btns.push(b); card.appendChild(b);
   });
+  card.appendChild(fb);
   body.appendChild(card);
+  if(focus){ try{ h.focus({preventScroll:true}); }catch(e){} }
 }
 
 function renderResult(){
+  qz.done = true;
   const body = document.getElementById("quizBody");
   body.innerHTML = "";
   const n = qz.list.length, sc = qz.score;
-  const msg = sc>=9 ? "Expert du Sénégal ! Tu connais ton pays sur le bout des doigts." : sc>=6 ? "Bravo, tu es un excellent explorateur du Sénégal !" : sc>=3 ? "Pas mal ! Explore la carte pour en savoir plus et retente ta chance." : "Le voyage ne fait que commencer : explore la carte et reviens jouer !";
+  const msg = sc>=9 ? t("msg9") : sc>=6 ? t("msg6") : sc>=3 ? t("msg3") : t("msg0");
   const card = document.createElement("div"); card.className = "qcard"; card.style.textAlign = "center";
-  const lab = document.createElement("div"); lab.className = "qcount"; lab.textContent = "TON RÉSULTAT";
+  card.setAttribute("role","status");
+  const lab = document.createElement("div"); lab.className = "qcount"; lab.textContent = t("yourResult");
   const big = document.createElement("div"); big.className = "score"; big.textContent = sc+" / "+n;
+  big.setAttribute("tabindex","-1");
   const p = document.createElement("p"); p.style.cssText = "color:#4a5751;line-height:1.6;margin-bottom:16px"; p.textContent = msg;
-  const again = document.createElement("button"); again.className = "btn"; again.textContent = "Rejouer";
+  const again = document.createElement("button"); again.type = "button"; again.className = "btn"; again.textContent = t("replay");
   again.addEventListener("click",startQuiz);
-  const map = document.createElement("button"); map.className = "btn"; map.style.cssText = "margin-left:8px;background:#10251e;color:#fff";
-  map.textContent = "Retour à la carte"; map.addEventListener("click",closeQuiz);
+  const map = document.createElement("button"); map.type = "button"; map.className = "btn"; map.style.cssText = "margin-left:8px;background:#10251e;color:#fff";
+  map.textContent = t("backMap"); map.addEventListener("click",closeQuiz);
   card.appendChild(lab); card.appendChild(big); card.appendChild(p); card.appendChild(again); card.appendChild(map);
   body.appendChild(card);
+  try{ big.focus({preventScroll:true}); }catch(e){}
 }
-document.getElementById("quizBtn").addEventListener("click",startQuiz);
+kbd(document.getElementById("quizBtn"),startQuiz);
 document.getElementById("quizBack").addEventListener("click",closeQuiz);
 
 
@@ -880,35 +1074,27 @@ function preloadImg(url){
     setTimeout(res,15000);
   });
 }
-async function getFull(s){
-  if(s.full||!s.moreTitle) return;
-  try{
-    const url = "https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1&format=json&origin=*&titles="+encodeURIComponent(s.moreTitle);
-    const j = await getJSON(url);
-    const pg = Object.values((j.query||{}).pages||{})[0];
-    s.full = (pg && pg.extract) ? pg.extract : (s.more||"");
-  }catch(e){}
-}
+async function getFull(s){ if(!s.moreTitle) return; await ensureFull(s); }
 
 async function prepareOffline(){
   const btn = document.getElementById("offBtn"), st = document.getElementById("offSt");
   if(!("serviceWorker" in navigator) || location.protocol.indexOf("http")!==0){
-    st.textContent = "Ouvre le site depuis son lien en ligne (https) pour activer le mode hors connexion.";
+    st.textContent = t("offNeedHttps");
     return;
   }
   btn.disabled = true;
-  st.textContent = "Activation du mode hors connexion…";
+  st.textContent = t("offEnabling");
   try{ await navigator.serviceWorker.ready; }catch(e){}
   await new Promise(r=>setTimeout(r,600));
   if(!navigator.serviceWorker.controller){
     btn.disabled = false;
-    st.textContent = "Recharge la page une fois, puis touche à nouveau le bouton.";
+    st.textContent = t("offReload");
     return;
   }
   let total = 0; ORDER.forEach(n=>{ total += DATA[n].sites.length; });
   let done = 0, fail = 0;
   for(const name of ORDER){
-    st.textContent = "Téléchargement… "+done+" / "+total+" sites ("+name+")";
+    st.textContent = t("offProgress",{d:done,t:total,n:name});
     try{ await enrichFromWikipedia(name); }catch(e){}
     for(const s of DATA[name].sites){
       try{
@@ -917,37 +1103,41 @@ async function prepareOffline(){
         if(s.img) await preloadImg(s.img); else fail++;
       }catch(e){ fail++; }
       done++;
-      st.textContent = "Téléchargement… "+done+" / "+total+" sites ("+name+")";
+      st.textContent = t("offProgress",{d:done,t:total,n:name});
     }
   }
   btn.disabled = false;
   st.textContent = fail===0
-    ? "✅ Prêt ! Le site marche maintenant sans internet sur cet appareil."
-    : "✅ Prêt (sauf "+fail+" photo(s) introuvable(s)). Le site marche sans internet sur cet appareil.";
+    ? t("offDone")
+    : t("offDonePartial",{f:fail});
 }
 document.getElementById("offBtn").addEventListener("click",prepareOffline);
 
 /* =====================================================
    DÉMARRAGE
 ===================================================== */
-const grid = document.getElementById("grid");
-ORDER.forEach(n=>{
-  const e = document.createElement("div");
-  e.className = "destination";
-  e.innerHTML = "<small>"+DATA[n].tag+"</small><h3>"+n+"</h3>";
-  e.addEventListener("click",()=>openRegion(n));
-  grid.appendChild(e);
-});
+function buildGrid(){
+  const grid = document.getElementById("grid"); grid.innerHTML = "";
+  ORDER.forEach(n=>{
+    const e = document.createElement("button"); e.type = "button"; e.className = "destination";
+    const sm = document.createElement("small"); sm.textContent = RT(n).tag;
+    const h = document.createElement("span"); h.className = "dn"; h.textContent = n;
+    e.appendChild(sm); e.appendChild(h);
+    e.addEventListener("click",()=>openRegion(n));
+    grid.appendChild(e);
+  });
+}
 document.getElementById("backBtn").addEventListener("click",closeRegion);
 
 GEO = {features:fallbackFeatures(),real:false};
 renderNational();
+statusKey = "statusLoading";
+initLang();
 loadGeo().then(g=>{
   GEO = g;
   renderNational();
-  document.getElementById("status").textContent = g.real
-    ? "Carte réelle des 14 régions chargée ✓"
-    : "Carte simplifiée (limites réelles indisponibles — vérifie ta connexion internet).";
+  statusKey = g.real ? "statusReal" : "statusFallback";
+  setStatus();
 });
 </script>
 </body>

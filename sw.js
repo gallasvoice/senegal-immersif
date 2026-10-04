@@ -1,10 +1,10 @@
 /* Sénégal Immersif — mode hors connexion */
-const CACHE = "senegal-immersif-v1";
+const CACHE = "senegal-immersif-v2";
 
 self.addEventListener("install", e=>{
   e.waitUntil(
     caches.open(CACHE)
-      .then(c=>c.addAll(["./","./index.html"]).catch(()=>{}))
+      .then(c=>Promise.all(["./","./index.html","./lang-en.js","./lang-de.js"].map(u=>c.add(u).catch(()=>{}))))
       .then(()=>self.skipWaiting())
   );
 });
@@ -59,7 +59,7 @@ self.addEventListener("fetch", e=>{
     );
   }else if(u.hostname === "upload.wikimedia.org"){
     e.respondWith(cacheFirstImage(req));
-  }else if(u.hostname === "fr.wikipedia.org" || u.hostname.indexOf("githubusercontent.com")!==-1 || u.hostname === "github.com" || u.hostname.indexOf("geoboundaries")!==-1){
+  }else if(u.hostname.endsWith("wikipedia.org") || u.hostname.indexOf("githubusercontent.com")!==-1 || u.hostname === "github.com" || u.hostname.indexOf("geoboundaries")!==-1){
     e.respondWith(networkFirst(req, 7000));
   }
 });
